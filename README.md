@@ -1,6 +1,9 @@
 # HashiCorp Vault-troubleshooting-lab
 
-### **This project is a work in progress.  I’m building it step by step and will be completed soon.**
+![Status](https://img.shields.io/badge/Status-Work_in_Progress-yellow)
+
+### **This project is a work in progress. I’m building it step by step and will be completed soon.**
+
 
 ## Vault Troubleshooting Lab
 
@@ -155,6 +158,7 @@ To reset the lab and start over run the following commands:
 docker-compose down -v  
 rm -rf data/* init.txt setup/roles/app-role-id.txt setup/roles/app-secret-id.txt
 docker-compose up -d
+./setup/init-vault.sh
 vault status
 ```
 Expect the output to be:
