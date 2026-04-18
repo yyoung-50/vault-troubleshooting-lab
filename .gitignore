@@ -56,3 +56,6 @@ Thumbs.db
 # Ignore compiled or temp shell artifacts
 *.swp
 *.swo
+
+setup/roles/app-role-id.txt
+setup/roles/app-secret-id.txt

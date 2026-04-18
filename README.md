@@ -160,53 +160,46 @@ To reset the lab and start over run the following commands:
 docker-compose down -v  
 rm -rf data/* init.txt setup/roles/app-role-id.txt setup/roles/app-secret-id.txt
 docker-compose up -d
-./setup/init-vault.sh
 vault status
 ```
-Expect the output to be:
-``
+**Expect the output to be:**
+```
 Initialized: false
 Sealed: true
+```
+- At this point Vault will not be **initialized** and it will be **sealed**.
 
-At this point Vault will not be **initialized** and it will be **sealed**.
+- Vault is only initialized once, so to start over you need to delete the storage backend directory because that's where the initialization information is stored.
 
-Vault is only initiated once, so to start over you need to delete the contents of the data directory.  
-
-
-Run the script to configure Vault
-
+Run the script to configure Vault and export the VAULT_ADDR environment variable
+```
 ./setup/init-vault.sh
-Set VAULT_ADDR
 export VAULT_ADDR="http://127.0.0.1:8200"
-
-Verify everything worked
+```
+Verify Vault is initialized and not sealed
+```
 vault status
-
-Expect the output to be:
-
+```
+**Expect the output to be:**
+```
 Initialized: true
 Sealed: false
-
-Run commands to verify the script worked
-
+```
+```
+**Verify the script worked** - see 👉 [Verify the Script](docs/Verifying-vault-script)
 ```
 
-**Scenarios Included**
+## Scenarios Included
 
-AppRole Authentication Failure
-
-Permission Denied (Policy Issue)
-
-Token Expired (TTL Issue)
-
-KV v2 Path Confusion
-
-Transit Decrypt Failure
-
-Vault Seal Behavior
-
-Wrong Mount Path
-
+```
+1. AppRole Authentication Failure
+2. Permission Denied (Policy Issue)
+3. Token Expired (TTL Issue)
+4. KV v2 Path Confusion
+5. Transit Decrypt Failure
+6. Vault Seal Behavior
+7. Wrong Mount Path
+```
 Each scenario is designed to align with real-world Vault support cases.
 
 Code
