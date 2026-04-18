@@ -1,8 +1,10 @@
-# HashiCorp Vault-troubleshooting-lab
-
-![Status](https://img.shields.io/badge/Status-Work_in_Progress-yellow)
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Work_in_Progress-yellow" width="220">
+</p>
 
 ### **This project is a work in progress. I’m building it step by step and will be completed soon.**
+
+
 
 
 ## Vault Troubleshooting Lab
