@@ -1,0 +1,58 @@
+# -----------------------------
+# Vault Troubleshooting Lab
+# -----------------------------
+
+# Ignore Vault storage backend (machine-generated, huge filenames)
+data/
+vault/data/
+*/data/
+
+# Ignore Vault audit logs
+*.audit
+*.log
+
+# Ignore Vault tokens, unseal keys, sensitive artifacts
+*.token
+*.key
+*.seal
+*.json.tmp
+
+# -----------------------------
+# Docker / Compose
+# -----------------------------
+# Local volumes
+volumes/
+*/volumes/
+
+# Docker build artifacts
+*.pid
+*.sock
+
+# -----------------------------
+# OS / Editor Noise
+# -----------------------------
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains
+.idea/
+
+# -----------------------------
+# Git Noise
+# -----------------------------
+*.orig
+*.rej
+
+# -----------------------------
+# Shell Scripts
+# -----------------------------
+# Ignore compiled or temp shell artifacts
+*.swp
+*.swo
