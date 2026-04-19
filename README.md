@@ -10,7 +10,7 @@ Each example scenario represents troubleshooting case for a common issues workin
 
 ---
 
-## 🚀 Overview
+## Overview
 
 This lab provides an environment to practice:
 
@@ -32,7 +32,7 @@ Each scenario is written like a **mini support ticket** or troubleshooting case 
 
 ---
 
-## 🧰 Prerequisites (Required Before You Begin)
+## Prerequisites (Required Before You Begin)
 
 This lab runs **Vault inside a Docker container**.  
 You **must** install Docker before running any Vault CLI commands.
