@@ -208,13 +208,16 @@ docs/resetting-the-lab.md
 ---
 ## Author
 
-Yvonne Young (Connect with me: LinkedIn)
+Yvonne Young 
 
 Cloud & Support Engineer
 
 Focused on customer advocacy, troubleshooting, and clean documentation.
 
+## 📫 Let's Connect
 
+🔗 **LinkedIn:**  
+https://www.linkedin.com/in/yvonne-young
 
 
 
