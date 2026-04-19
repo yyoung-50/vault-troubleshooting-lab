@@ -4,16 +4,15 @@
 
 # Vault Troubleshooting Lab
 
-A hands-on lab designed to simulate **real-world HashiCorp Vault support cases**.  
-You will reproduce issues, diagnose failures, identify root causes, and apply fixes — just like a Vault Support Engineer.
+This lab is designed to simulate real-world Vault technical issues.  I encountered these learning Vault and thought I would share my knowledge and to learn more about troubleshooting Vault.
 
-This project is intentionally scenario-driven and focuses on building a **repeatable troubleshooting workflow**.
+Each example scenario represents troubleshooting case for a common issues working with Vault.  The goal is to help you build a repeatable troubleshooting workflow to strengthen the ability to diagnose and resolve Vault issues.
 
 ---
 
 ## 🚀 Overview
 
-This lab provides a safe, controlled environment to practice:
+This lab provides an environment to practice:
 
 - Reproducing common Vault failures  
 - Reading and interpreting error messages  
@@ -21,7 +20,7 @@ This lab provides a safe, controlled environment to practice:
 - Understanding Vault behavior (auth, policies, KV, transit, sealing)  
 - Documenting findings clearly and professionally  
 
-Each scenario is written like a **mini support ticket** and includes:
+Each scenario is written like a **mini support ticket** or troubleshooting case and includes:
 
 - Summary  
 - Symptoms  
@@ -30,25 +29,6 @@ Each scenario is written like a **mini support ticket** and includes:
 - Root cause  
 - Fix  
 - Takeaways  
-
----
-
-## 🎯 Goals of This Lab
-
-By completing this lab, you will demonstrate:
-
-- Understanding of Vault core concepts  
-- Ability to troubleshoot real Vault issues  
-- Confidence with CLI workflows  
-- Support‑engineer style communication  
-- A structured, repeatable debugging method  
-
-This lab is ideal for:
-
-- Support engineers preparing for Vault‑related roles  
-- DevOps/Cloud engineers wanting hands‑on troubleshooting practice  
-- Anyone preparing for the Vault Associate exam  
-- Engineers building a strong technical portfolio  
 
 ---
 
@@ -73,45 +53,56 @@ If you need help installing these tools, see the full setup guide:
 ## ⚠️ Before You Begin
 
 Vault in this lab **does not** run directly on your machine.  
-It runs **inside a Docker container**, and all Vault data is stored in a bind-mounted folder (`./data`).
+It runs **inside a Docker container**, and all Vault data is stored in a bind-mounted folder.
 
-This means:
+Before running any Vault commands, you must:
 
-- You must start the container **before** running any Vault CLI commands  
-- You must export `VAULT_ADDR` so the CLI knows where Vault is running  
-- You must initialize and unseal Vault after each reset  
+- Install **Docker Desktop**
+- Ensure Docker is running
+- Clone this repository (this automatically creates the required folder structure)
 
-Quick start:
+---
 
-```bash
-docker-compose up -d
-chmod +x setup/init-vault.sh
-./setup/init-vault.sh
+## Lab Setup Overview
 
-export VAULT_ADDR="http://127.0.0.1:8200"
-vault status
-```
-If Vault is sealed or uninitialized, see the full lab reset guide:
-/docs/resetting-the-lab.md (hyperlink here)
+These are quick start commands after installing Docker Desktop.
 
-placeholder
-**Quick Start**
+### 1. Install Docker Desktop
+Make sure Docker is running before continuing.
 
-This is the fastest way to get the lab running.
+### 2. Clone this project
+Cloning the repo automatically creates the **correct** folder structure.
+
 ```bash
 git clone <your-repo>
 cd vault-troubleshooting-lab
+```
 
+3. Start the Vault container
+This pulls the official Vault image and runs Vault inside Docker.
+
+```bash
 docker-compose up -d
+```
+
+4. Initialize and unseal Vault
+This script configures Vault for the troubleshooting cases.
+```bash
 chmod +x setup/init-vault.sh
 ./setup/init-vault.sh
-
+```
+5. Point your CLI to the running Vault
+```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
 vault status
 ```
-Vault is not initialized, unsealed, configured and ready for scenarios.
+
+If Vault is sealed or uninitialized, see the full lab reset guide:
+/docs/resetting-the-lab.md (hyperlink here)
 
 ## Lab Folder Structure
+
+The **scenarios** folder contains seven troubleshooting examples to practice.
 
 ```
 vault-troubleshooting-lab/
@@ -140,9 +131,10 @@ vault-troubleshooting-lab/
 Full folder structure explanation
 docs/folder-structure.md
 
-Scenario Index
+---
+**Scenario (Troubleshooting Cases) Index**
 
-Each scenario is a standalone troubleshooting exercise.
+Each scenario is a standalone troubleshooting exercise. The are located in the **scenarios** folder.
 
 - AppRole Authentication Failure
 
@@ -160,30 +152,32 @@ Each scenario is a standalone troubleshooting exercise.
 
 Start with Scenario 01 →
 📄 scenarios/01-approle-auth-failure.md
-```
+---
 
-How to Use This Lab (Short Version)
+**How to Work with the Scenarios** 
+
 Each scenario follows the same workflow:
 
-Read the scenario
+- Read the scenario
 
-Reproduce the issue
+- Reproduce the issue
 
-Diagnose the problem
+- Diagnose the problem
 
-Identify the root cause
+- Identify the root cause
 
-Apply the fix
+- Apply the fix
 
-Capture your takeaways
+- Document your takeaways
 
 Full detailed guide →
 📄 docs/how-to-use-this-lab.md
-```
+---
 
 ## Resetting the Lab (Short Version)
 
 Before each scenario, reset Vault to a clean state:
+
 ```bash
 docker-compose down
 docker rm -f vault-lab 2>/dev/null
@@ -201,16 +195,17 @@ vault status
 Full detailed reset guide:
 docs/resetting-the-lab.md
 
+---
 ## Additional Documentation
 
 - Environment Setup → docs/environment-setup.md
 
 - Full Project Blueprint → docs/full-project-blueprint.md
 
-- Vault Concepts (Beginner Friendly) → docs/vault-concepts.md
+- How to Use This Lab → docs/vault-concepts.md
 
 - Cheat Sheets → docs/cheat-sheets/
-
+---
 ## Author
 
 Yvonne Young (Connect with me: LinkedIn)
