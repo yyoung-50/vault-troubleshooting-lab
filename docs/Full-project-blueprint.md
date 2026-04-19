@@ -165,7 +165,7 @@ Problem: Vault suddenly sealed.
 Root Cause: Simulated restart or storage issue.
 What you learn: Seal/unseal workflow, operator commands.
 
-Scenario 07 — Wrong Mount Path
+**Scenario 07** — Wrong Mount Path
 Problem: “No handler for route.”
 Root Cause: Using default path instead of custom mount.
 What you learn: How mounts work and how to debug them.

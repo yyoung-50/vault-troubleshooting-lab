@@ -1,0 +1,82 @@
+
+---
+
+## `scenarios/05-transit-decrypt-failure.md`
+
+```markdown
+# Scenario 05 – Transit Decrypt Failure
+
+## Summary
+
+An application can encrypt data using the Transit engine but fails to decrypt it.
+
+---
+
+## Symptoms
+
+- `vault write transit/decrypt/...` fails.
+- Error mentions invalid ciphertext or key version.
+- Encryption appears to work fine.
+```
+
+**Reproduce the issue**
+
+1. Enable Transit:
+
+```bash
+vault secrets enable transit
+```
+
+2. Create a key:
+
+```bash
+vault write -f transit/keys/app-key
+```
+3. Encrypt some data:
+
+```bash 
+vault write -format=json transit/encrypt/app-key plaintext=$(echo -n "hello" | base64) \
+  | jq -r '.data.ciphertext' > ciphertext.txt
+```
+4. Corrupt the ciphertext:
+
+```bash
+sed -i '' 's/./X/' ciphertext.txt  # macOS example; or edit manually
+```
+5. Try to decrypt:
+
+```bash
+vault write transit/decrypt/app-key ciphertext="$(cat ciphertext.txt)"
+```
+**Diagnose the Problem**
+
+Check:
+
+- Is the ciphertext intact?
+
+- Was the key rotated?
+
+- Is the correct key name used?
+
+
+**Identify the Root Cause**
+
+- Ciphertext was corrupted or modified.
+
+- Or wrong key name / version used.
+
+**Apply the Fix**
+
+- Use the original, unmodified ciphertext.
+
+- Ensure the correct key name and version.
+
+**Document Your Takeaways**
+
+- Transit is sensitive to ciphertext integrity.
+
+- Support engineers should:
+
+  - Ask for the exact ciphertext used.
+
+  - Verify key name and rotation status.

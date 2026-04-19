@@ -1,0 +1,103 @@
+When you want to reset the lab and “start from scratch” 
+
+You must doe the following:
+
+Vault container ✅
+Vault volumes ✅
+Vault data directory (./data) ✅ ← THIS is the key
+
+ Note: Vault stores initialization state in the data directory
+
+
+
+
+
+Step 1 — Full reset 
+
+run this from your project root folder which is the **vault-troubleshooting-lab** directory.
+
+docker compose down -v
+docker rm -f vault-lab 2>/dev/null || true
+docker system prune -f
+docker network prune -f
+
+Command	Purpose
+docker-compose down -v	stops + removes containers & volumes
+rm -rf data/*	deletes Vault storage (removes initialization)
+
+
+
+Resetting the Lab
+To reset everything
+```
+docker-compose down -v  
+rm -rf data/* init.txt setup/roles/app-role-id.txt setup/roles/app-secret-id.txt
+     Vault is only initiated once, so to start over you need to delete the contents of the data directory.  
+docker-compose up -d
+vault status
+```
+At this point Vault will not be **initialized** and it will be **sealed**.
+
+# Expected output
+Initialized: false
+Sealed: true
+
+
+# Set VAULT_ADDR
+export VAULT_ADDR="http://127.0.0.1:8200"
+
+# Verify everything worked
+vault status
+
+# Run the script to configure Vault
+./setup/init-vault.sh
+
+# Expected the output:
+Initialized: true
+Sealed: false
+
+Run commands to verify the script worked
+
+
+✅ What should happen
+
+Your script should:
+
+Initialize Vault
+Unseal Vault
+Login
+Enable KV
+Enable AppRole
+Create policies
+Create role
+Store secret
+Generate files
+
+vault status
+Expect:
+
+Initialized: true
+Sealed: false
+
+run commands to verify the following:
+
+Final verification checklist
+
+Run these:
+
+Vault state
+vault status
+
+Expect:
+
+Initialized: true
+Sealed: false
+Secret exists
+vault kv get kv/app/config
+AppRole works
+cat setup/roles/app-role-id.txt
+cat setup/roles/app-secret-id.txt
+init file exists
+cat init.txt
+
+Vault is only initiated once, there for to start over need to delete the data folder.  Will get error already initialized see screenshot

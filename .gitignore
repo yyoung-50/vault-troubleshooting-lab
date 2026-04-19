@@ -57,5 +57,8 @@ Thumbs.db
 *.swp
 *.swo
 
+*.txt
 setup/roles/app-role-id.txt
 setup/roles/app-secret-id.txt
+
+README-Draft-02.md

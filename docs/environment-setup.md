@@ -1,6 +1,6 @@
 **📌 1. System Requirements**
 
-- You will need:
+**You will need:**
 
 - Windows 10/11, macOS, or Linux
 
@@ -11,32 +11,33 @@
 A terminal environment (PowerShell, Bash, or VS Code terminal)
 ```
 
-**🐳 2. Install Docker**
+**2. Install Docker**
 
 **Windows 10/11**
 
-Install **Docker Desktop for Windows:**
+1. Install **Docker Desktop for Windows:**
 
-Download from: https://www.docker.com/products/docker-desktop (docker.com in Bing)
+2. Download from: https://www.docker.com/products/docker-desktop (docker.com in Bing)
 
-Enable WSL 2 when prompted
+3. Enable WSL 2 when prompted
 
-Restart your machine after installation
+4. Restart your machine after installation
 
 **Docker Desktop includes:**
 
-Docker Engine
+- Docker Engine
 
-Docker Compose
+- Docker Compose
 
-Docker CLI
+- Docker CLI
 
-Kubernetes (optional)
+- Kubernetes (optional)
 
 No additional configuration is required.
 ```
 
-macOS
+**macOS**
+
 Install Docker Desktop for Mac:
 
 Download from: https://www.docker.com/products/docker-desktop (docker.com in Bing)
@@ -58,15 +59,17 @@ Enable non‑root access:
 
 bash
 sudo usermod -aG docker $USER
+
 Sign out and sign back in.
 
-🧪 3. Verify Docker Installation
-Run:
+3. Verify Docker Installation
 
-
+Run the following commands:
+```
 docker --version
 docker compose version
 docker run hello-world
+```
 You should see a confirmation message from Docker.
 
 🧰 4. Install Visual Studio Code (Recommended)
