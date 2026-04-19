@@ -2,7 +2,7 @@
   <img src="https://img.shields.io/badge/Status-Work_in_Progress-yellow" width="220">
 </p>
 
-# Vault Troubleshooting Lab
+# Vault Troubleshooting Lab (Beta Version)
 
 This lab is designed to simulate real-world Vault technical issues.  I encountered these learning Vault and thought I would share my knowledge and to learn more about troubleshooting Vault.
 
