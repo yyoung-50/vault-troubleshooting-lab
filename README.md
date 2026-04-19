@@ -206,13 +206,14 @@ docs/resetting-the-lab.md
 
 - Cheat Sheets → docs/cheat-sheets/
 ---
-## Author
+## **Author**
 
-Yvonne Young 
-
-Cloud & Support Engineer
-
+**Yvonne Young**  
+*Cloud & Support Engineer*  
 Focused on customer advocacy, troubleshooting, and clean documentation.
+
+---
+
 
 ## 📫 Let's Connect
 
