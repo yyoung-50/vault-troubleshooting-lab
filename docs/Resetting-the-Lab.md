@@ -35,20 +35,24 @@ Removing **./data** is what actually resets Vault’s state.
 
 
 3. Start a fresh Vault instance
+Recreates the Vault container with an empty data directory.
 ```
 docker-compose up -d
 ```
-This recreates the Vault container with an empty data directory.
 
 4. Configure the Vault CLI
-
 
 ```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
 vault status
 ```
 Setting **VAULT_ADDR** ensures the CLI communicates with the running Vault instance.
-**vault status** confirms Vault is reachable.
+
+5. Confirm that Vault is reachable
+
+```bash
+vault status
+```
 
 5. Initialize and unseal Vault
 
@@ -63,8 +67,6 @@ This script:
 - Applies the initial setup required for the scenarios
 - After this step, Vault is ready for any scenario in the lab.
 
-
-
 Summary of the Reset Workflow
 ```
 docker-compose down
@@ -76,4 +78,29 @@ export VAULT_ADDR="http://127.0.0.1:8200"
 vault status
 ./setup/init-vault.sh
 ```
-Use this sequence before each scenario to ensure a clean, reproducible environment.
+
+
+
+## Resetting the Lab (Short Version)
+
+Before each scenario, reset Vault to a clean state:
+
+```bash
+
+`-----------------------------------------
+
+To completely reset Vault to a clean state, run:
+
+```bash
+docker-compose down
+docker rm -f vault-lab 2>/dev/null
+
+rm -rf ./data/* ./init.txt ./setup/roles/app-role-id.txt ./setup/roles/app-secret-id.txt 
+mkdir data
+
+docker-compose up -d
+
+export VAULT_ADDR="http://127.0.0.1:8200"
+vault status
+
+./setup/init-vault.sh

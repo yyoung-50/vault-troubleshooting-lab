@@ -4,7 +4,7 @@
 
 # Vault Troubleshooting Lab (Beta Version)
 
-This lab is designed to simulate real-world Vault technical issues.  I encountered these learning Vault and thought I would share my knowledge and to learn more about troubleshooting Vault.
+This lab is designed to simulate real-world Vault technical issues.  I encountered some of these issues learning Vault and thought I would share my knowledge and also learn more about troubleshooting Vault.
 
 Each example scenario represents troubleshooting case for a common issues working with Vault.  The goal is to help you build a repeatable troubleshooting workflow to strengthen the ability to diagnose and resolve Vault issues.
 
@@ -14,7 +14,7 @@ Each example scenario represents troubleshooting case for a common issues workin
 
 This lab provides an environment to practice:
 
-- Reproducing common Vault failures  
+- Reproducing common Vault Errors  
 - Reading and interpreting error messages  
 - Diagnosing misconfigurations  
 - Understanding Vault behavior (auth, policies, KV, transit, sealing)  
@@ -45,6 +45,8 @@ You **must** install Docker before running any Vault CLI commands.
 - A terminal environment (Git Bash, WSL, macOS Terminal, etc.)
 - VS Code or another code editor
 
+Note: - **Vault CLI installed locally** (the CLI runs on your machine; the Vault server runs inside Docker)
+
 If you need help installing these tools, see the full setup guide:  
 📄 **docs/environment-setup.md**
 
@@ -65,10 +67,13 @@ Before running any Vault commands, you must:
 
 ## Lab Setup Overview
 
-These are quick start commands after installing Docker Desktop.
+These are quick-start commands after installing Docker Desktop.
 
 ### 1. Install Docker Desktop
 Make sure Docker is running before continuing.
+```
+Download from: https://www.docker.com/products/docker-desktop
+```
 
 ### 2. Clone this project
 Cloning the repo automatically creates the **correct** folder structure.
@@ -78,20 +83,21 @@ git clone <your-repo>
 cd vault-troubleshooting-lab
 ```
 
-3. Start the Vault container
+### 3. Start the Vault container
 This pulls the official Vault image and runs Vault inside Docker.
 
 ```bash
 docker-compose up -d
 ```
 
-4. Initialize and unseal Vault
+### 4. Initialize and unseal Vault
 This script configures Vault for the troubleshooting cases.
+
 ```bash
 chmod +x setup/init-vault.sh
 ./setup/init-vault.sh
 ```
-5. Point your CLI to the running Vault
+### 5. Point your CLI to the running Vault
 ```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
 vault status
@@ -100,7 +106,7 @@ vault status
 If Vault is sealed or uninitialized, see the full lab reset guide:
 /docs/resetting-the-lab.md (hyperlink here)
 
-## Lab Folder Structure
+### Lab Folder Structure
 
 The **scenarios** folder contains seven troubleshooting examples to practice.
 
@@ -132,9 +138,22 @@ Full folder structure explanation
 docs/folder-structure.md
 
 ---
-**Scenario (Troubleshooting Cases) Index**
+## About the Scenarios
 
-Each scenario is a standalone troubleshooting exercise. The are located in the **scenarios** folder.
+**What is a Scenario?**  
+A scenario in this lab is a **Vault troubleshooting case**; a small, self‑contained “mini ticket” where something in Vault isn’t working as expected. You’ll encounter a realistic error message, identify the root cause, and walk through the steps to fix it. 
+
+Each scenario includes:
+
+- an **error message**
+
+- a **misconfiguration or mistake**
+
+- a **realistic** problem you might encounter in a support or engineering role
+
+All scenarios are standalone exercises and are located in the scenarios/ folder.
+
+## Included Scenarios
 
 - AppRole Authentication Failure
 
@@ -156,6 +175,8 @@ Start with Scenario 01 →
 
 **How to Work with the Scenarios** 
 
+To ensure consistent results, before starting a new scenario, run the "./reset-lab.sh" command 
+
 Each scenario follows the same workflow:
 
 - Read the scenario
@@ -174,23 +195,12 @@ Full detailed guide →
 📄 docs/how-to-use-this-lab.md
 ---
 
-## Resetting the Lab (Short Version)
+## Resetting the Lab (Full Reset)
 
-Before each scenario, reset Vault to a clean state:
+To completely reset Vault to a clean state, run:
 
 ```bash
-docker-compose down
-docker rm -f vault-lab 2>/dev/null
-
-rm -rf ./data
-mkdir data
-
-docker-compose up -d
-
-export VAULT_ADDR="http://127.0.0.1:8200"
-vault status
-
-./setup/init-vault.sh
+./reset-lab.sh
 ```
 Full detailed reset guide:
 docs/resetting-the-lab.md
@@ -213,7 +223,6 @@ docs/resetting-the-lab.md
 Focused on customer advocacy, troubleshooting, and clean documentation.
 
 ---
-
 
 ## 📫 Let's Connect
 
