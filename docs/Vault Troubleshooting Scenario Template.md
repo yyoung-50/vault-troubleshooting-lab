@@ -1,3 +1,7 @@
+## Troubleshooting Case Scenario Template.
+
+Use this template as a guide to documenting troubleshooting scenarios.
+
 # Scenario XX – <Short Scenario Title>
 
 ## Summary

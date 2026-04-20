@@ -4,9 +4,9 @@
 
 # Vault Troubleshooting Lab (Beta Version)
 
-This lab is designed to simulate real-world Vault technical issues.  I encountered some of these issues learning Vault and thought I would share my knowledge and also learn more about troubleshooting Vault.
+This lab is designed to simulate real-world Vault technical issues. I encountered some of these issues learning Vault and thought I would share my knowledge and also learn more about troubleshooting Vault.
 
-Each example scenario represents troubleshooting case for a common issues working with Vault.  The goal is to help you build a repeatable troubleshooting workflow to strengthen the ability to diagnose and resolve Vault issues.
+There are **troubleshooting scenarios** that represent examples of some common issues working with Vault. The goal of this lab is to help you build a repeatable troubleshooting workflow to strengthen the ability to diagnose and resolve Vault issues.
 
 ---
 
@@ -20,7 +20,7 @@ This lab provides an environment to practice:
 - Understanding Vault behavior (auth, policies, KV, transit, sealing)  
 - Documenting findings clearly and professionally  
 
-Each scenario is written like a **mini support ticket** or troubleshooting case and includes:
+Each troubleshooting scenario is written like a **mini support ticket** or support case and includes:
 
 - Summary  
 - Symptoms  
@@ -43,9 +43,9 @@ You **must** install Docker before running any Vault CLI commands.
 - **Vault CLI** installed locally
 - **jq** installed (for parsing JSON)
 - A terminal environment (Git Bash, WSL, macOS Terminal, etc.)
-- VS Code or another code editor
+- VS Code or any code editor
 
-Note: - **Vault CLI installed locally** (the CLI runs on your machine; the Vault server runs inside Docker)
+Note: - **Vault CLI installed locally** (the CLI runs on your machine; the Vault server runs inside a Docker container)
 
 If you need help installing these tools, see the full setup guide:  
 📄 **docs/environment-setup.md**
@@ -104,7 +104,7 @@ vault status
 ```
 
 If Vault is sealed or uninitialized, see the full lab reset guide:
-/docs/resetting-the-lab.md (hyperlink here)
+[Resetting the Lab](docs/Resetting-the-Lab.md)
 
 ### Lab Folder Structure
 
@@ -169,8 +169,8 @@ All scenarios are standalone exercises and are located in the scenarios/ folder.
 
 - Wrong Mount Path
 
-Start with Scenario 01 →
-📄 scenarios/01-approle-auth-failure.md
+Start with Scenario 01:
+[Approle Auth Failure](scenarios/01-approle-auth-failure.md)
 ---
 
 **How to Work with the Scenarios** 
@@ -191,8 +191,8 @@ Each scenario follows the same workflow:
 
 - Document your takeaways
 
-Full detailed guide →
-📄 docs/how-to-use-this-lab.md
+Full detailed guide:
+[How to Use This Lab](docs/How-to-Use-This-Lab.md)
 ---
 
 ## Resetting the Lab (Full Reset)
@@ -203,9 +203,9 @@ To completely reset Vault to a clean state, run:
 ./reset-lab.sh
 ```
 Full detailed reset guide:
-docs/resetting-the-lab.md
 
----
+see [Resetting the Lab](docs/Resetting-the-Lab.md)
+
 ## Additional Documentation
 
 - Environment Setup → docs/environment-setup.md

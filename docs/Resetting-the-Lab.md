@@ -1,4 +1,3 @@
-Resetting the Lab
 
 ## Resetting the Lab
 
@@ -11,7 +10,7 @@ This reset sequence removes the running container, clears Vault’s data directo
 
 1. Stop and remove the current environment
 
-```
+```bash
 docker-compose down
 docker rm -f vault-lab 2>/dev/null
 ```
@@ -19,24 +18,23 @@ docker rm -f vault-lab 2>/dev/null
 
 - docker rm -f vault-lab ensures no leftover or ghost Vault container remains.
 
-
 2. Reset Vault’s data directory
-```
-rm -rf ./data
-mkdir data
+```bash
+rm -rf ./data/*
+
 ```
 This lab uses a bind mount:
 
-```hcl
+```bash
 ./data:/vault/data
 ```
 Because of this, Vault’s storage backend lives on your host filesystem.
 Removing **./data** is what actually resets Vault’s state.
 
-
 3. Start a fresh Vault instance
 Recreates the Vault container with an empty data directory.
-```
+
+```bash
 docker-compose up -d
 ```
 
@@ -67,40 +65,37 @@ This script:
 - Applies the initial setup required for the scenarios
 - After this step, Vault is ready for any scenario in the lab.
 
-Summary of the Reset Workflow
-```
-docker-compose down
-docker rm -f vault-lab 2>/dev/null
-rm -rf ./data
-mkdir data
-docker-compose up -d
-export VAULT_ADDR="http://127.0.0.1:8200"
-vault status
-./setup/init-vault.sh
-```
+## Resetting the Lab 
 
-
-
-## Resetting the Lab (Short Version)
+see reset script [Reset Script](vault-troubleshooting-lab/reset-lab.sh)
 
 Before each scenario, reset Vault to a clean state:
-
-```bash
-
-`-----------------------------------------
 
 To completely reset Vault to a clean state, run:
 
 ```bash
+# Stopping Vault container
 docker-compose down
+
+# Removing old Vault container if exists
 docker rm -f vault-lab 2>/dev/null
 
+# Cleaning Vault data directory and generated credentials
 rm -rf ./data/* ./init.txt ./setup/roles/app-role-id.txt ./setup/roles/app-secret-id.txt 
 mkdir data
 
+# Starting fresh Vault container
 docker-compose up -d
 
-export VAULT_ADDR="http://127.0.0.1:8200"
-vault status
-
+# Reinitializing and unsealing Vault
 ./setup/init-vault.sh
+```
+
+After running the reset script, then run:
+
+```bash
+export VAULT_ADDR="http://127.0.0.1:8200"
+```
+Then verify with the "vault status" command
+
+
