@@ -111,7 +111,7 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 
   - Secret ID is valid and not expired
 
-Note: After generating a new secret ID, I was able to sign on with the command below.
+Note: After generating a new secret ID, you are able to sign on with the command below.
 
 This command authenticates to Vault using the AppRole method and returns a client token for API/CLI access
 ```bash
