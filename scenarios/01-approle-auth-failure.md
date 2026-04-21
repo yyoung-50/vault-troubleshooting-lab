@@ -28,13 +28,16 @@ vault write auth/approle/login role_id="..." secret_id="..."
 **Reproduce the issue**
 
 1. Ensure Vault is running and initialized:
-This step assumes you ran the init--vault.sh script.
+This step assumes you ran the init-vault.sh script.
+
+Extracts the root token from init.txt and sets  active VAULT_TOKEN for the Vault CLI:
 ```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
 export VAULT_TOKEN=$(grep 'Initial Root Token:' init.txt | awk '{print $4}')
 ```
 2. Get the correct Role ID and Secret ID:
 
+Set the shell variables
 ```bash
 ROLE_ID=$(cat setup/roles/app-role-id.txt)
 SECRET_ID=$(cat setup/roles/app-secret-id.txt)
@@ -58,7 +61,7 @@ Key checks:
 
 - Does the role exist at auth/approle/role/app-role?
 
-Commands:
+Commands to diagnose:
 
 ```bash 
 vault read auth/approle/role/app-role
@@ -94,7 +97,7 @@ vault write -format=json -f auth/approle/role/app-role/secret-id \
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
 
-**Document Your Takeaways**
+**Key findings**
 
 - AppRole auth depends on both a valid role_id and secret_id.
 
@@ -107,3 +110,15 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
    - Role ID matches
 
   - Secret ID is valid and not expired
+
+Note: After generating a new secret ID, I was able to sign on with the command below.
+
+This command authenticates to Vault using the AppRole method and returns a client token for API/CLI access
+```bash
+vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
+```
+See screenshot below:
+
+![Vault Login Output](screenshots/scenario/01/correct-login-output.png)
+
+**Note:** Screenshots in this lab may show expired or revoked tokens/SecretIDs. These values are safe to display because they are no longer valid.

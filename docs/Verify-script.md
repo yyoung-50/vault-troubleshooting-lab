@@ -1,6 +1,6 @@
 ## Verifying the Vault Initialization Script
 
-After running the **init-vault.sh** script, run the following commands to confirm that Vault is initialized, unsealed, and correctly configured.
+After running the **init-vault.sh** script, run the following commands below to confirm that Vault is initialized, unsealed, and correctly configured.
 
 ---
 

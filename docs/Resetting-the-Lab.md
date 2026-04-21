@@ -1,10 +1,27 @@
 
 ## Resetting the Lab
+---
 
-Each troubleshooting scenario assumes a clean Vault environment.  
-To ensure consistent results, use the following reset procedure before starting a new scenario.
+- To ensure consistent results, run the reset script before starting a new scenario.
 
-This reset sequence removes the running container, clears Vault’s data directory, and recreates a fresh Vault instance.
+- The rest sequence removes the running container, clears Vault’s data directory, and recreates a fresh Vault instance.
+
+To reset the lab run the **reset-lab.sh** script from the vault-troubleshooting-lab folder.
+
+Run the command:
+```bash
+./reset-lab.sh
+```
+After you run this script, then run these two commands:
+```bash
+export VAULT_ADDR="http://127.0.0.1:8200"
+vault status
+```
+From here you are ready to practice on the troubleshooting scenarios located here: [Troubleshooting Scenarios](scenarios/)
+
+Instructions to use this lab are here: [How to Use this Lab](docs/How-to-Use-this-Lab.md)
+
+## Below is a detailed description of the **reset-lab.sh** script
 
 ---
 
