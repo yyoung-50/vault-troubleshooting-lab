@@ -4,9 +4,9 @@
 
 # Vault Troubleshooting Lab (Beta Version)
 
-This lab simulates a few common errors you’ll encounter when learning and working with HashiCorp Vault. It’s based on real issues I ran into while troubleshooting Vault. The goal of this lab is to show examples of a troubleshooting workflow to isolate an error as an example of the thought process of solving a technical problem.
+This project is a troubleshooting lab that simulates a few common errors you’ll encounter when learning and working with HashiCorp Vault. It’s based on real issues I ran into while troubleshooting Vault. 
 
-There are Vault troubleshooting scenario files written as small, self‑contained “mini tickets” where Vault is misconfigured. The files contain, all of the commands to diagnose and fix the Vault issue including the key findings of the technical issue.
+The goal of this lab is to show examples of a troubleshooting workflow to isolate an error as an example of the thought process of solving a technical problem.
 
 ### Prerequisites 
 
@@ -83,39 +83,36 @@ Running the **vault status** command verifies that your CLI can reach the Vault 
 
 You are now ready to work through the troubleshooting scenarios in the next steps below.
 
-### Troubleshooting Scenarios
+### Troubleshooting-Scenarios
 
 **Working with Scenario files** 
 
-- The troubleshooting **scenarios** folder contains files to practice working with Vault errors.  
+- The Vault troubleshooting scenario files are written as small, self‑contained “mini tickets” where Vault is misconfigured. 
 
-- All of the commands to diagnose and fix the Vault issue are in the file including the key findings. 
+- The files are located in the **scenarios folder**  in the **Explorer sidebar** 
 
-The files are located in the **scenarios folder**  in the **Explorer sidebar** 
+Each scenario file has all of the commands to diagnose and fix the Vault issues:
 
 - Read the scenario
-- Reproduce the issue
-- Diagnose the problem
-- Identify the root cause
-- Apply the fix
-- Key learning points
+- Run through the commands to reproduce the issue
+- Run through the commands to diagnose the problem
+- Run through the commands to apply the fix
+- Key findings and solutions
 
 **Start with Scenario 01:** 👉 Click here: [AppRole Auth Failure](scenarios/01-approle-auth-failure.md)
 
-After you complete one scenario, run the **./reset-lab.sh** command and go to the next scenario file. The rest script removes the running container, clears Vault’s data directory, and recreates a fresh Vault instance.
+If you need more help walking through the scenario files, here's a walk through guide:
+[How to Work Through a Scenario](docs/How-to-Use-this-Lab.md)
 
-**Full detailed guide:**  [How to Work Through a Scenario](docs/How-to-Use-this-Lab.md)
-
----
-
-### Resetting the Lab (Full Reset)
-
-To completely reset Vault to a clean state, run:
+After you complete one scenario, run the reset script and go to the next scenario file.
 
 ```bash
 ./reset-lab.sh
 ```
-**Full detailed reset guide:**   see 👉 [Resetting the Lab](docs/Resetting-the-Lab.md)
+
+### Resetting the Lab 
+
+**Full detailed reset guide:**  see 👉 [Resetting the Lab](docs/Resetting-the-Lab.md)
 
 ### Additional Documentation
 

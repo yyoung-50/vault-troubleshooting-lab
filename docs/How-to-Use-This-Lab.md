@@ -1,14 +1,12 @@
 ## How to Use This Lab
 
-Each troubleshooting scenario represents some common issues that support engineers encounter when working with Vault.  
-The goal is to help you build a repeatable troubleshooting workflow and strengthen your ability to diagnose and resolve Vault or any technical issue when working with applications and systems.
+This document has detailed instructions on walking through a troubleshooting scenario.
 
 ---
 
 ## Lab Folder Structure
 
 **The key files and folders are:**
-
 
 | Path / File | Description |
 |-------------|-------------|
@@ -26,6 +24,7 @@ vault-troubleshooting-lab/
 │
 ├── README.md
 ├── docker-compose.yml
+├── config.hcl
 ├── setup/
 │   ├── init-vault.sh
 │   ├── policies/
@@ -46,41 +45,37 @@ vault-troubleshooting-lab/
     └── cheat-sheets/
 ```
 
-**Each scenario file in the scenarios folder contains:**
+**Each troubleshooting scenario file in the scenarios folder contains:**
 
 - A short summary of the issue
 - Symptoms you will observe
 - Commands to reproduce the failure
 - Diagnostic steps
 - The root cause
-- The fix
-- Key takeaways
+- The fix and key findings
 
 ### How to Work Through a Scenario
 
-**Troubleshooting Scenarios**
+**Vault Error Topics**
 
+There are seven Vault troubleshooting topics
 ```
 1. AppRole Authentication Failure
-
 2. Permission Denied (Policy Issue)
-
 3. Token Expired (TTL Issue)
-
 4. KV v2 Path Confusion
-
 5. Transit Decrypt Failure
-
 6. Vault Seal Behavior
-
 7. Wrong Mount Path
 ```
 
-- Each scenario file is a separate exercise and written like a mini ticket. You work on each file independently and reset the lab after each one and go to the next file.  Each scenario follows the same workflow:
+- Each scenario file is a separate exercise and written like a mini ticket. You work on each file independently and reset the lab after each one and go to the next file.  
+
+- All of the commands you need to diagnose and fix the Vault issue are in the file.
 
 **1. Read the Scenario**
 
-- Go to the **scenarios folder** in the **Explorer sidebar** (left side of VS Code)
+- Go to the **scenarios folder** in the **Explorer sidebar** 
 
 - Open a file called **01-approle-auth-failure.md**
 
@@ -88,58 +83,32 @@ vault-troubleshooting-lab/
 
 **2. Reproduce the Issue**
 
-- Use the commands provided in the scenario to intentionally trigger the failure.
-- Take a screenshot of the error output and add your own notes.
+- Use the commands provided in the scenario file to intentionally trigger the failure.
 
-This helps you understand how the issue presents itself in a real environment.
+- Take a screenshot of the error output and add your own notes.
 
 **3. Diagnose the Problem**
 
 Follow the diagnostic steps in the scenario:
 
 - Inspect Vault paths
-
 - Read policies
-
 - Check auth methods
-
 - Validate tokens
-
 - Compare expected vs. actual behavior
-
-Add screenshots and commentary as you go.
 
 **4. Identify the Root Cause**
 
-- Each scenario includes a high-level explanation of what’s actually wrong.
+- An explanation of what’s actually wrong.
 
-- Use this section to confirm your findings and add your own reasoning.
+- Screenshots of the error messages.
 
 **5. Apply the Fix**
 - Run the commands provided in the “Fix” section.
 
-- Take a screenshot of the successful output and describe what changed.
+**6. Key Findings**
 
-**6. Capture Your Takeaways**
+- Summary of the issue including screenshots
 
-Each scenario ends with a short list of what the issue teaches.
 
-- Add your own reflections:
 
-- What you learned
-
-- How you would explain this to a customer
-
-**Recommended Workflow for Screenshots & Notes**
-
-For each scenario:
-
-- Screenshot the error
-
-- Screenshot the diagnostic commands
-
-- Screenshot the fix
-
-- Add your own commentary under each section
-
-- Commit your updated .md file to your repo

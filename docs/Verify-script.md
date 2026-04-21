@@ -17,7 +17,7 @@ After running the **init-vault.sh** script, run the following commands below to 
 
 ---
 
-A detailed checklist of the commands to verify that the **init-vault.sh** script was successful.
+A detailed checklist below of the commands to verify that the **init-vault.sh** script was successful.
 
 **1. Check Vault Status**
 ```bash
@@ -93,6 +93,5 @@ vault status
 ```
 Running the **vault status** command verifies that your CLI can reach the Vault server and that Vault is initialized and unsealed
 
-You are now ready to work through a troubleshooting scenario.
+You are now ready to work through a troubleshooting scenario. see [Troubleshooting Scenarios](../README.md#troubleshooting-scenarios)
 
-Start here: [How to Work Through a Scenario](/docs/How-to-Work-Through-a-Scenario.md)
