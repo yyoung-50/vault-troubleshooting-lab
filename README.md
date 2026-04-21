@@ -7,6 +7,7 @@
 This lab simulates common errors you’ll encounter when learning and working with HashiCorp Vault. It’s based on real issues I ran into while troubleshooting Vault. The goal of this lab is to show examples of a troubleshooting workflow to isolate an error as an example of the thought process of solving a technical problem.
 
 Each scenario walks through a practical troubleshooting workflow similar to what support engineers use to validate a system, isolate an issue, and fix the root cause. While the examples are Vault-specific, the approach can be applied to troubleshooting technical issues in general.
+
 ---
 
 ### Overview
