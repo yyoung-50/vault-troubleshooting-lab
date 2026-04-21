@@ -76,14 +76,15 @@ vault-troubleshooting-lab/
 7. Wrong Mount Path
 ```
 
-- Each scenario is a separate exercise and written like a mini ticket. You work on each scenario independently and reset the lab after each one.  Each scenario follows the same workflow:
+- Each scenario file is a separate exercise and written like a mini ticket. You work on each file independently and reset the lab after each one and go to the next file.  Each scenario follows the same workflow:
 
 **1. Read the Scenario**
 
-- Open the file called 01-approle-auth-failure.md
+- Go to the **scenarios folder** in the **Explorer sidebar** (left side of VS Code)
+
+- Open a file called **01-approle-auth-failure.md**
 
 - Review the summary, symptoms, and error output.
-
 
 **2. Reproduce the Issue**
 

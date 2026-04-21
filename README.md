@@ -126,7 +126,9 @@ All scenarios are standalone exercises and are located in the scenarios/ folder.
 
 ### Included Scenarios
 
-The troubleshooting **scenarios** folder contains seven examples to practice working with Vault errors.
+The troubleshooting **scenarios** folder contains seven files to practice working with Vault errors.
+
+They are located in the **scenarios folder**  in the **Explorer sidebar** (left side of VS Code)
 
 - AppRole Authentication Failure
 
@@ -142,15 +144,19 @@ The troubleshooting **scenarios** folder contains seven examples to practice wor
 
 - Wrong Mount Path
 
-**Start with Scenario 01:** 👉 Start here: [AppRole Auth Failure](scenarios/01-approle-auth-failure.md)
+**Start with Scenario 01:** 👉 Click here: [AppRole Auth Failure](scenarios/01-approle-auth-failure.md)
 
 ---
 
 **How to Work with the Scenarios** 
 
-To ensure consistent results, before starting a new scenario, run the "./reset-lab.sh" command 
+To ensure consistent results, before starting a new scenario, run the "./reset-lab.sh" command.
 
-Each scenario follows the same workflow:
+After your complete one scenario, run the "./reset-lab.sh" command and go to the next scenario file.
+
+- For for example, go to the **Explorer sidebar** (left side of VS Code), open the **scenarios folder** to select from the list of scenario files. There are 7 files
+
+Each scenario file follows the same workflow:
 
 - Read the scenario
 
