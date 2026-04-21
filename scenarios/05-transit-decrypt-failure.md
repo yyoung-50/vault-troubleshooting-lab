@@ -15,6 +15,8 @@ An application can encrypt data using the Transit engine but fails to decrypt it
 ## Symptoms
 
 - `vault write transit/decrypt/...` fails.
+
+## Error Output
 - Error mentions invalid ciphertext or key version.
 - Encryption appears to work fine.
 ```

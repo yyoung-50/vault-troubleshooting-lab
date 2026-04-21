@@ -18,7 +18,7 @@ A token cannot read a secret from `kv/app/config` even though the user believes 
 - Application logs show 403 errors.
 - User insists “the policy looks correct.”
 
-Example:
+## Error Output:
 
 ```bash
 vault kv get kv/app/config

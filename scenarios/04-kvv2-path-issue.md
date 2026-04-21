@@ -16,8 +16,11 @@ A user cannot read a secret from KV v2. They get “no value found at path” ev
 
 - `vault kv get kv/app/config` fails.
 - User insists “I wrote the secret already.”
-- Error: `no value found at kv/app/config`.
 
+## Error Output
+- Error: `no value found at kv/app/config`.
+```bash
+kv/app/config
 ```
 **Reproduce the issue**
 

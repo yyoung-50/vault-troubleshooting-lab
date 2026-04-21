@@ -4,13 +4,12 @@
 
 # Vault Troubleshooting Lab (Beta Version)
 
-This lab is designed to simulate real-world Vault technical issues. I encountered some of these issues learning Vault and thought I would share my knowledge and also learn more about troubleshooting Vault.
+This lab simulates common errors you’ll encounter when learning and working with HashiCorp Vault. It’s based on real issues I ran into while troubleshooting Vault. The goal of this lab is to show examples of a troubleshooting workflow to isolate an error as an example of the thought process of solving a technical problem.
 
-There are **troubleshooting scenarios** that represent examples of some common issues working with Vault. The goal of this lab is to help you build a repeatable troubleshooting workflow to strengthen the ability to diagnose and resolve Vault issues.
-
+Each scenario walks through a practical troubleshooting workflow similar to what support engineers use to validate a system, isolate an issue, and fix the root cause. While the examples are Vault-specific, the approach can be applied to troubleshooting technical issues in general.
 ---
 
-## Overview
+### Overview
 
 This lab provides an environment to practice:
 
@@ -32,7 +31,7 @@ Each troubleshooting scenario is written like a **mini support ticket** or suppo
 
 ---
 
-## Prerequisites (Required Before You Begin)
+### Prerequisites (Required Before You Begin)
 
 This lab runs **Vault inside a Docker container**.  
 You **must** install Docker before running any Vault CLI commands.
@@ -47,12 +46,12 @@ You **must** install Docker before running any Vault CLI commands.
 
 Note: - **Vault CLI installed locally** (the CLI runs on your machine; the Vault server runs inside a Docker container)
 
-If you need help installing these tools, see the full setup guide:  
-📄 **docs/environment-setup.md**
+If you need help installing these tools, see the full setup guide below:  
+[Vault Setup Guide](docs/environment-setup.md)
 
 ---
 
-## ⚠️ Before You Begin
+### ⚠️ Before You Begin
 
 Vault in this lab **does not** run directly on your machine.  
 It runs **inside a Docker container**, and all Vault data is stored in a bind-mounted folder.
@@ -65,7 +64,7 @@ Before running any Vault commands, you must:
 
 ---
 
-## Lab Setup Overview
+### Lab Setup Overview
 
 These are quick-start commands after installing Docker Desktop.
 
@@ -97,50 +96,21 @@ This script configures Vault for the troubleshooting cases.
 chmod +x setup/init-vault.sh
 ./setup/init-vault.sh
 ```
-### 5. Point your CLI to the running Vault
+
+### 5. Point your CLI to the running Vault server
+
 ```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
 vault status
 ```
+Running the **vault status** command verifies that your CLI can reach the Vault server and that Vault is initialized and unsealed
 
-If Vault is sealed or uninitialized, see the full lab reset guide:
-[Resetting the Lab](docs/Resetting-the-Lab.md)
+You are now ready to work through the troubleshooting scenarios in the next steps below.
 
-### Lab Folder Structure
-
-The **scenarios** folder contains seven troubleshooting examples to practice.
-
-```
-vault-troubleshooting-lab/
-│
-├── README.md
-├── docker-compose.yml
-├── setup/
-│   ├── init-vault.sh
-│   ├── policies/
-│   └── roles/
-├── scenarios/
-│   ├── 01-approle-auth-failure.md
-│   ├── 02-policy-deny.md
-│   ├── 03-token-expired.md
-│   ├── 04-kvv2-path-issue.md
-│   ├── 05-transit-decrypt-failure.md
-│   ├── 06-seal-behavior.md
-│   └── 07-wrong-mount-path.md
-└── docs/
-    ├── environment-setup.md
-    ├── resetting-the-lab.md
-    ├── how-to-use-this-lab.md
-    ├── folder-structure.md
-    └── cheat-sheets/
-```
-Full folder structure explanation
-docs/folder-structure.md
-
----
-## About the Scenarios
+### About the Scenarios
 
 **What is a Scenario?**  
+
 A scenario in this lab is a **Vault troubleshooting case**; a small, self‑contained “mini ticket” where something in Vault isn’t working as expected. You’ll encounter a realistic error message, identify the root cause, and walk through the steps to fix it. 
 
 Each scenario includes:
@@ -153,7 +123,9 @@ Each scenario includes:
 
 All scenarios are standalone exercises and are located in the scenarios/ folder.
 
-## Included Scenarios
+### Included Scenarios
+
+The troubleshooting **scenarios** folder contains seven examples to practice working with Vault errors.
 
 - AppRole Authentication Failure
 
@@ -169,8 +141,8 @@ All scenarios are standalone exercises and are located in the scenarios/ folder.
 
 - Wrong Mount Path
 
-Start with Scenario 01:
-[Approle Auth Failure](scenarios/01-approle-auth-failure.md)
+**Start with Scenario 01:** 👉 Start here: [AppRole Auth Failure](scenarios/01-approle-auth-failure.md)
+
 ---
 
 **How to Work with the Scenarios** 
@@ -191,8 +163,8 @@ Each scenario follows the same workflow:
 
 - Document your takeaways
 
-Full detailed guide:
-[How to Use This Lab](docs/How-to-Use-This-Lab.md)
+**Full detailed guide:**  [How to Work Through a Scenario](docs/How-to-Use-this-Lab.md)
+
 ---
 
 ## Resetting the Lab (Full Reset)
@@ -202,21 +174,25 @@ To completely reset Vault to a clean state, run:
 ```bash
 ./reset-lab.sh
 ```
-Full detailed reset guide:
+**Full detailed reset guide:**   see 👉 [Resetting the Lab](docs/Resetting-the-Lab.md)
 
-see [Resetting the Lab](docs/Resetting-the-Lab.md)
+### Additional Documentation
 
-## Additional Documentation
+- Environment Setup → [Vault Lab Setup](docs/environment-setup.md)
 
-- Environment Setup → docs/environment-setup.md
+- How to Use This Lab → [How to Use this Lab](docs/How-to-Use-this-Lab.md)
 
-- Full Project Blueprint → docs/full-project-blueprint.md
+- Resetting the Lab → [Resetting the Lab](docs/Resetting-the-Lab.md)
 
-- How to Use This Lab → docs/vault-concepts.md
+- Verify Script → [Verify Script](docs/Verify-script.md)
 
-- Cheat Sheets → docs/cheat-sheets/
+- Support Engineer Vault Cheat Sheet [Support Engineer Vault Cheatsheet](docs//Support-Engineer-Cheat-Sheet.md)
+
+- Top 20 Vault Commands → [Top 20 Vault Commands](docs/Top-20-Vault-Commands.md)
+
 ---
-## **Author**
+
+### Author
 
 **Yvonne Young**  
 *Cloud & Support Engineer*  
@@ -224,7 +200,7 @@ Focused on customer advocacy, troubleshooting, and clean documentation.
 
 ---
 
-## 📫 Let's Connect
+### 📫 Let's Connect
 
 🔗 **LinkedIn:**  
 https://www.linkedin.com/in/yvonne-young

@@ -15,9 +15,13 @@ An application suddenly loses access to Vault. It worked earlier, but now all re
 ## Symptoms
 
 - Requests that previously worked now fail.
+
+## Error Output
 - Errors mention “expired token” or “permission denied.”
 - `vault token lookup` shows `expired_time` in the past.
 
+```bash
+vault token lookup
 ```
 **Reproduce the Issue**
 

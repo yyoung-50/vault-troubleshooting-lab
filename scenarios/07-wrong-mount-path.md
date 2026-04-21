@@ -17,6 +17,10 @@ A user gets “no handler for route” or similar errors when trying to access a
 - `no handler for route` errors.
 - User is calling `secret/...` when engine is mounted at `kv/`.
 - Confusion about mount paths.
+
+## Error Output
+```bash
+vault secrets list
 ``` 
 
 **Reproduce the issue**

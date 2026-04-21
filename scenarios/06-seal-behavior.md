@@ -18,6 +18,8 @@ Vault appears “down” or “unavailable” after a restart. Users cannot acce
 - UI shows Vault as sealed.
 - Apps cannot authenticate.
 
+## Error Output
+`Vault is sealed`.
 ```
 **Reproduce the issue**
 
