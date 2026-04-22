@@ -1,8 +1,5 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Work_in_Progress-yellow" width="220">
-</p>
 
-# Vault Troubleshooting Lab (Beta Version)
+# Vault Troubleshooting Lab 
 
 This project is a troubleshooting lab that simulates a few common errors you’ll encounter when learning and working with HashiCorp Vault. It’s based on real issues I ran into while troubleshooting Vault. 
 
