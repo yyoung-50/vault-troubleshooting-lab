@@ -19,7 +19,7 @@ An application using AppRole cannot authenticate to Vault. The login request fai
 - `vault write auth/approle/login ...` returns an error.
 - Application logs show “permission denied” or “invalid role_id/secret_id”.
 
-## Error Output:
+## Error Output: (see error screenshot below)
 
 ```bash
 vault write auth/approle/login role_id="..." secret_id="..."
@@ -117,9 +117,13 @@ This command authenticates to Vault using the AppRole method and returns a clien
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
-See screenshot below:
+See solution below:
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/correct-login-output.png)
+
+Error output from invalid Secret ID:
+
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/invalid-role-secret-id.png)
 
 
 **Note:** Screenshots in this lab may show expired or revoked tokens/SecretIDs. These values are safe to display because they are no longer valid.
