@@ -12,6 +12,7 @@ After you run this script, then run these two commands:
 export VAULT_ADDR="http://127.0.0.1:8200"
 vault status
 ```
+
 From here you are ready to practice on the troubleshooting scenarios. 
 
 see [Troubleshooting Scenarios](../README.md#troubleshooting-scenarios)  
@@ -77,6 +78,13 @@ Setting **VAULT_ADDR** ensures the CLI communicates with the running Vault insta
 ```bash
 vault status
 ```
+Vault status output will show:
+Initialized: true
+Sealed: false
+
+Output for running "vault status" command
+
+![Vault Status](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/vault-status.png)
 
 
 

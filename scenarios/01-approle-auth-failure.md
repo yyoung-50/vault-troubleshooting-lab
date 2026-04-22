@@ -1,5 +1,4 @@
 
-
 ---
 
 ## `scenarios/01-approle-auth-failure.md`
@@ -10,7 +9,6 @@
 ## Summary
 
 An application using AppRole cannot authenticate to Vault. The login request fails with a permission or invalid credentials error.
-
 ---
 
 ## Symptoms
@@ -61,7 +59,7 @@ Key checks:
 
 - Does the role exist at auth/approle/role/app-role?
 
-Commands to diagnose:
+**Commands to diagnose:**
 
 ```bash 
 vault read auth/approle/role/app-role
@@ -117,7 +115,7 @@ This command authenticates to Vault using the AppRole method and returns a clien
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
-See solution below:
+Successful authentication:
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/correct-login-output.png)
 
