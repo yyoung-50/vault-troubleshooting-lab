@@ -65,13 +65,13 @@ This script:
 - Applies the initial setup required for the scenarios
 - After this step, Vault is ready for any scenario in the lab.
 
-### 5. Configure the Vault CLI
+### 5. Set the VAULT_ADDR Environment Variable
 
 ```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
 vault status
 ```
-Setting **VAULT_ADDR** ensures the CLI communicates with the running Vault instance.
+The VAULT_ADDR environment variable tells the HashiCorp Vault CLI which Vault instance to communicate with.
 
 ### 5. Confirm that Vault is reachable
 

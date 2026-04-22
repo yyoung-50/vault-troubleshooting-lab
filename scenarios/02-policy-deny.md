@@ -19,7 +19,7 @@ A token cannot read a secret from `kv/app/config` even though the user believes 
 - User insists “the policy looks correct.”
 
 ## Error Output:
-
+ 
 ```bash
 vault kv get kv/app/config
 # Error reading kv/app/config: permission denied

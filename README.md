@@ -1,7 +1,7 @@
 
 # Vault Troubleshooting Lab 
 
-This project is a hands-on HashiCorp Vault troubleshooting lab built around issues I ran into while learning Vault. There are  troubleshooting scenarios that present specific errors, along with the commands used, what went wrong, and the step-by-step process to fix them. Each scenario is written like a mini support ticket, similar to what you’d see during a real support call.
+This project is a hands-on HashiCorp Vault troubleshooting lab built around issues I ran into while learning Vault. There are troubleshooting scenarios that present specific errors, along with the commands used, what went wrong, and the step-by-step process to fix them. Each scenario is written like a mini support ticket, similar to what you’d see during a real support call.
 
 The goal of this project is to show how to break down and isolate issues. I focus on the thought process behind troubleshooting so you can apply the same approach to Vault or any technical issue.
 
@@ -92,7 +92,7 @@ You are now ready to work through the troubleshooting scenarios in the next step
 
 - The Vault troubleshooting scenario files are written as small, self‑contained “mini tickets” where Vault is misconfigured. 
 
-- The files are located in the **scenarios folder**  in the **Explorer sidebar** 
+- Assuming you are working in VS Code, the files are located in the **scenarios folder** in the **Explorer sidebar** 
 
 Each scenario file has all of the commands to diagnose and fix the Vault issues:
 
@@ -107,10 +107,14 @@ Each scenario file has all of the commands to diagnose and fix the Vault issues:
 If you need more help walking through the scenario files, here's a walk through guide:
 [How to Work Through a Scenario](docs/How-to-Use-this-Lab.md)
 
-After you complete one scenario, run the reset script and go to the next scenario file.
+After you complete one scenario, run the reset script and set the **VAULT_ADDR** environment variable, then go to the next scenario file:
 
 ```bash
 ./reset-lab.sh
+```
+```bash
+export VAULT_ADDR="http://127.0.0.1:8200"
+vault status
 ```
 
 ### Resetting the Lab 
