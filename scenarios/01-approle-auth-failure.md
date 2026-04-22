@@ -119,6 +119,7 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
 See screenshot below:
 
-![Vault Login Output](screenshots/scenario01/correct-login-output.png)
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/correct-login-output.png)
+
 
 **Note:** Screenshots in this lab may show expired or revoked tokens/SecretIDs. These values are safe to display because they are no longer valid.
