@@ -3,7 +3,9 @@
 
 This project is a hands-on HashiCorp Vault troubleshooting lab built around issues I ran into while learning Vault. There are  troubleshooting scenarios that present specific errors, along with the commands used, what went wrong, and the step-by-step process to fix them. Each scenario is written like a mini support ticket, similar to what you’d see during a real support call.
 
-The goal isn’t just to resolve the issue, but to show how to break down and isolate problems. I focus on the thought process behind troubleshooting so you can apply the same approach to Vault or any technical issue.
+The goal of this project is to show how to break down and isolate issues. I focus on the thought process behind troubleshooting so you can apply the same approach to Vault or any technical issue.
+
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/trouble-ticket-small.png)
 
 ### Prerequisites 
 
