@@ -22,7 +22,7 @@ Note: - **Vault CLI installed locally** (the CLI runs on your machine; the Vault
 
 If you need help installing these tools, see the full setup guide below:  
 
-[Vault Setup Guide](docs/How-to-Use-this-lab.md)
+[Vault Setup Guide](docs/How-to-Use-this-Lab.md)
 
 ---
 
