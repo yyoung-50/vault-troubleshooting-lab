@@ -7,6 +7,10 @@ The goal of this project is to show how to break down and isolate issues. I focu
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/trouble-ticket-small.png)
 
+**Ticket # 456790 - AppRole Authentication Failure**
+
+---
+
 ### Prerequisites 
 
 This lab runs **Vault inside a Docker container**.  
