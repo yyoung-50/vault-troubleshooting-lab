@@ -19,16 +19,16 @@ You **must** install Docker before running any Vault CLI commands.
 ### Required tools:
 - **Docker Desktop** (mandatory)  
 - **Docker Compose** (included with Docker Desktop)
-- **Vault CLI** installed locally
+- **Vault CLI** (optional installed locally)
 - **jq** installed (for parsing JSON)
 - A terminal environment (Git Bash, WSL, macOS Terminal, etc.)
-- VS Code or any code editor
+- **VS Code** or any code editor (This lab assumes you are running VS Code)
 
 Note: - **Vault CLI installed locally** (the CLI runs on your machine; the Vault server runs inside a Docker container)
 
 If you need help installing these tools, see the full setup guide below:  
 
-[Vault Setup Guide](./docs/How-to-Use-this-Lab.md)
+[Vault Setup Guide](./docs/environment-setup.md)
 
 ---
 
@@ -47,13 +47,18 @@ Before running any Vault commands, you must:
 
 ### Lab Setup 
 
-### 1. Install Docker Desktop
-Make sure Docker is running before continuing.
+### 1. Install Visual Studio Code (Recommended)
+```
+Download VS Code:  see https://code.visualstudio.com/
+```
+
+### 2. Install Docker Desktop
+Make sure Vault is running in the Docker container before continuing.
 ```
 Download from: https://www.docker.com/products/docker-desktop
 ```
 
-### 2. Clone this project
+### 3. Clone this project
 Cloning the repo automatically creates the **correct** folder structure.
 
 ```bash
@@ -61,14 +66,14 @@ git clone <your-repo>
 cd vault-troubleshooting-lab
 ```
 
-### 3. Start the Vault container
+### 4. Start the Vault container
 This pulls the official Vault image and runs Vault inside Docker.
 
 ```bash
 docker-compose up -d
 ```
 
-### 4. Initialize and unseal Vault
+### 5. Initialize and unseal Vault
 This script configures Vault for the troubleshooting cases.
 
 ```bash
@@ -76,13 +81,13 @@ chmod +x setup/init-vault.sh
 ./setup/init-vault.sh
 ```
 
-### 5. Point your CLI to the running Vault server
+### 6. Point your CLI to the running Vault server
+Running the **vault status** command verifies that your CLI can reach the Vault server and that Vault is initialized and unsealed
 
 ```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
 vault status
 ```
-Running the **vault status** command verifies that your CLI can reach the Vault server and that Vault is initialized and unsealed
 
 You are now ready to work through the troubleshooting scenarios in the next steps below.
 
