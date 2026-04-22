@@ -1,9 +1,9 @@
 
 # Vault Troubleshooting Lab 
 
-This project is a hands-on HashiCorp Vault troubleshooting lab based on 7 real issues I ran into while learning Vault. Each troubleshooting scenario is structured like a real troubleshooting case, with commands, errors, and step-by-step solutions. 
+This project is a hands-on HashiCorp Vault troubleshooting lab built around 7 issues I ran into while learning Vault. Each troubleshooting scenario presents a specific error, along with the commands used, what went wrong, and the step-by-step process to fix it.
 
-The goal of this lab is to show examples of a troubleshooting workflow to isolate errors as an example of the thought process of solving a technical issues.
+The goal isn’t just to resolve the issue, but to show how to break down and isolate problems. I focus on the thought process behind troubleshooting so you can apply the same approach to Vault or any technical issue.
 
 ### Prerequisites 
 
