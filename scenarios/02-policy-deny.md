@@ -94,6 +94,9 @@ After exporting the Token with the new app-policy, you will be able to run the c
 3. Run both commands:
 ```bash
 
+
+export VAULT_TOKEN=<root_token>
+
 vault kv get kv/app/config
 ```
 
