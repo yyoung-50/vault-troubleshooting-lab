@@ -25,11 +25,14 @@ kv/app/config
 **Reproduce the issue**
 
 1. Ensure KV v2 is enabled at `kv/` (done in setup).
+```bash
+vault secrets enable -path=kv kv
+```
 
 2. Write a secret:
 
 ```bash
-vault kv put kv/app/config api_key="super-secret-api-key"
+vault kv put kv/app/config api_key="super-secret-api-key-03"
 ```
 3. Try to read using the wrong path (API style):
 
@@ -59,9 +62,9 @@ vault read kv/data/app/config
 
 **Apply the Fix**
 
-- Use vault kv get kv/app/config with the CLI.
+- Use vault **kv get kv/app/config** with the CLI.
 
-- Use kv/data/app/config for API calls.
+- Use **kv/data/app/config** for API calls.
 
 **Document Your Takeaways**
 

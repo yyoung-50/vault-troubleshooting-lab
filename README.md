@@ -1,9 +1,13 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Work_in_Progress-yellow" width="220">
+</p>
+
 
 # Vault Troubleshooting Lab 
 
 This project is a hands-on HashiCorp Vault troubleshooting lab built around some of the issues I ran into while learning Vault. There are troubleshooting scenarios that present specific errors, along with the commands used, what went wrong, and the step-by-step process to fix them. Each scenario is written like a mini support ticket, similar to what you’d see during a real support call.
 
-The goal of this project is to show how to break down and isolate issues. I outline the step-by-step process behind troubleshooting so you can apply the same approach to Vault or any technical issue.
+The goal of this project is to show how to break down and isolate issues. I outline the step-by-step process behind troubleshooting that you can apply to Vault or any technical issue.
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/trouble-ticket-small.png)
 
@@ -86,7 +90,20 @@ Running the **vault status** command verifies that your CLI can reach the Vault 
 
 ```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
+export VAULT_TOKEN=<root_token>
 vault status
+```
+### To get a token
+1. Start Vault in dev mode:
+```bash
+vault server -dev
+```
+2. Copy the root token from the output
+3. Export environment variables:
+
+```bash
+export VAULT_ADDR="http://127.0.0.1:8200"
+export VAULT_TOKEN=<root_token>
 ```
 
 You are now ready to work through the troubleshooting scenarios in the next steps below.

@@ -33,16 +33,31 @@ vault kv get kv/app/config
 ```bash
 vault token create -policy="default" -ttl=30m
 ```
-2. Use that token:
+- When running this command, if you get the error 403 below, it could mean you are not authenticated. 
+- If running Vault in Docker or dev mode, restart will wipe out the token.
+
+"URL: POST http://127.0.0.1:8200/v1/auth/token/create
+Code: 403. Errors:"
+
+Run the command below. Empty output, you are not authenticated.
 
 ```bash
-export VAULT_TOKEN="<new-token>"
-vault kv get kv/app/config
+echo $VAULT_TOKEN
 ```
 
+2. Use the token from the command in Step 1 
+(vault token create -policy="default" -ttl=30m): 
+
+```bash
+export VAULT_TOKEN=<root_token>
+vault kv get kv/app/config
+```
+It should fail because the default policy which does not allow; reading, writing secrets, creating tokens, managing auth methods.
+
+- 
 **Diagnose the Problem**
 
-1. Which policies are attached to the token?
+1. Find out which policies are attached to the token?
 
 ```bash
 vault token lookup
@@ -53,27 +68,32 @@ vault token lookup
 ```bash
 vault policy read app-policy
 ```
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/vault-policy-read-app-policy.png)
 
 3. Is the token actually using app-policy?
 
 **Identify the Root Cause**
 
-- The token does not have the app-policy attached.
+- The token does not have the app-policy attached. 
+Confirmed by output of command "vault token lookup"
 
 - Or the policy path is wrong (e.g., kv/app/* instead of kv/data/app/* for KV v2).
 
 **Apply the Fix**
 
-1. Retrieve the correct Role ID:
+1. Create a new policy called "app-policy":
 
 ```bash
 vault token create -policy="app-policy" -ttl=30m
 ```
+This command creates a new token and attaches the "app-policy", the "default" policy and sets the TTL to 30 minutes.
 
-2. Generate a new Secret ID:
-
+2. Export the Token from the output of the command. 
+After exporting the Token with the new app-policy, you will be able to run the command.
+- 
+3. Run both commands:
 ```bash
-export VAULT_TOKEN="<new-app-policy-token>"
+export VAULT_TOKEN=<root_token>
 vault kv get kv/app/config
 ```
 
@@ -86,3 +106,6 @@ vault kv get kv/app/config
   - Which policies are attached to the token
 
   - Whether the policy paths match the engine type (KV v1 vs KV v2)
+
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/export-kv-get.png)
+

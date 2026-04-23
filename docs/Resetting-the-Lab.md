@@ -1,5 +1,5 @@
 
-## Resetting the Lab
+## Resetting the Lab Settings
 ---
 To reset the lab run the **reset-lab.sh** script from the vault-troubleshooting-lab folder.
 
@@ -10,9 +10,11 @@ Run the reset command:
 After you run this script, then run these two commands:
 ```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
+export VAULT_TOKEN=<root_token>
 vault status
 ```
-
+(Note: <root token> found in "init.txt" file in the root project folder, vault-troubleshooting-lab)
+A new <root token> is created every time you reset the lab settings.
 From here you are ready to practice on the troubleshooting scenarios. 
 
 see [Troubleshooting Scenarios](../README.md#troubleshooting-scenarios)  

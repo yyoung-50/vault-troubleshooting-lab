@@ -29,17 +29,20 @@ vault token lookup
 ```bash
 vault token create -policy="app-policy" -ttl=30s
 ```
-2. Use the token:
+2. Use the token from the command output:
 
 ```bash
-export VAULT_TOKEN="<short-lived-token>"
+export VAULT_TOKEN="hvs.CAESIFiw4rTsAOCE4ghY
 vault kv get kv/app/config
 ```
+Command will succeed
+
 3. Wait 45-60 seconds, then try again:
 
 ```bash 
 vault kv get kv/app/config
 ```
+Command will fail
 
 **Diagnose the Problem**
 
@@ -70,6 +73,9 @@ Look at the output:
 ```bash
 vault token create -policy="app-policy" -ttl=1h
 ```
+
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/tokenexpired.png)
+
 
 2. For production:
 
