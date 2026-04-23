@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+# Shell scripts must always be LF
+*.sh text eol=lf
+
+# Markdown files
+*.md text eol=lf
+
+# YAML (if you add later)
+*.yml text eol=lf
+*.yaml text eol=lf
+
