@@ -3,79 +3,12 @@
 ---
 To reset the lab run the **reset-lab.sh** script from the vault-troubleshooting-lab folder.
 
-Run the reset command:
+Before running check that the Docker Vault container is running.
 ```bash
-./reset-lab.sh
+source reset-lab.sh
 ```
-After you run this script, then run these two commands:
-```bash
-export VAULT_ADDR="http://127.0.0.1:8200"
-export VAULT_TOKEN=<root_token>
-vault status
-```
-(Note: <root token> found in "init.txt" file in the root project folder, vault-troubleshooting-lab)
-A new <root token> is created every time you reset the lab settings.
-From here you are ready to practice on the troubleshooting scenarios. 
 
-see [Troubleshooting Scenarios](../README.md#troubleshooting-scenarios)  
-
----
-
-### (Optional Information) 
-
-Below is a detailed description of the **reset-lab.sh** script
-
-### 1. Stop and remove the current environment
-
-```bash
-docker-compose down
-docker rm -f vault-lab 2>/dev/null
-```
-- docker-compose down stops the stack and removes the project network.
-
-- docker rm -f vault-lab ensures no leftover or ghost Vault container remains.
-
-### 2. Reset Vault’s data directory
-```bash
-rm -rf ./data/*
-
-```
-This lab uses a bind mount:
-
-```bash
-./data:/vault/data
-```
-Because of this, Vault’s storage backend lives on your host filesystem.
-Removing **./data** is what actually resets Vault’s state.
-
-### 3. Start a fresh Vault instance
-Recreates the Vault container with an empty data directory.
-
-```bash
-docker-compose up -d
-```
-### 4. Initialize and unseal Vault
-
-```bash
-./setup/init-vault.sh
-```
-This script:
-
-- Initializes Vault
-- Unseals Vault
-- Saves unseal keys and the root token to init.txt
-- Applies the initial setup required for the scenarios
-- After this step, Vault is ready for any scenario in the lab.
-
-### 5. Set the VAULT_ADDR Environment Variable
-
-```bash
-export VAULT_ADDR="http://127.0.0.1:8200"
-vault status
-```
-The VAULT_ADDR environment variable tells the HashiCorp Vault CLI which Vault instance to communicate with.
-
-### 5. Confirm that Vault is reachable
+### 5. Confirm that Vault is ready
 
 ```bash
 vault status

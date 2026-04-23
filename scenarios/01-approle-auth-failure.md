@@ -26,30 +26,24 @@ vault write auth/approle/login role_id="..." secret_id="..."
 **Reproduce the issue**
 
 1. Ensure Vault is running and initialized:
-This step assumes you ran the init-vault.sh script.
+This step assumes you ran the **reset-lab.sh** script to start with a fresh environment
 
-Extracts the root token from init.txt and sets  active VAULT_TOKEN for the Vault CLI:
-```bash
-export VAULT_ADDR="http://127.0.0.1:8200"
-export VAULT_TOKEN=$(grep 'Initial Root Token:' init.txt | awk '{print $4}')
-```
-2. Get the correct Role ID and Secret ID:
+See steps to run script here: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
 
-Set the shell variables
-```bash
-ROLE_ID=$(cat setup/roles/app-role-id.txt)
-SECRET_ID=$(cat setup/roles/app-secret-id.txt)
-```
-3. Try logging in with a wrong Role ID:
+2. Try logging in with a wrong Role ID:
 
 ```bash 
 vault write auth/approle/login role_id="wrong-role-id" secret_id="$SECRET_ID"
 ```
-4. Try logging in with a wrong Secret ID:
+3. Try logging in with a wrong Secret ID:
 
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="wrong-secret-id"
 ```
+
+Result of both commands will fail.
+
+
 **Diagnose the Problem**
 
 Key checks:
@@ -94,6 +88,7 @@ vault write -format=json -f auth/approle/role/app-role/secret-id \
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
+**Result:** Logging in with the correct values generated from the previous commands resolves the issue
 
 **Key findings**
 

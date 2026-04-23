@@ -16,11 +16,8 @@ The goal of this project is to show how to break down and isolate issues. I outl
 ---
 
 ### Prerequisites 
+No prior Vault setup required. The lab environment is fully automated after setup.
 
-This lab runs **Vault inside a Docker container**.  
-You **must** install Docker before running any Vault CLI commands.
-
-### Required tools:
 - **Docker Desktop** (mandatory)  
 - **Docker Compose** (included with Docker Desktop)
 - **Vault CLI** (optional installed locally)
@@ -28,24 +25,9 @@ You **must** install Docker before running any Vault CLI commands.
 - A terminal environment (Git Bash, WSL, macOS Terminal, etc.)
 - **VS Code** or any code editor (This lab assumes you are running VS Code)
 
-Note: - **Vault CLI installed locally** (the CLI runs on your machine; the Vault server runs inside a Docker container)
-
 If you need help installing these tools, see the full setup guide below:  
 
 [Vault Setup Guide](./docs/environment-setup.md)
-
----
-
-### ⚠️ Before You Begin
-
-Vault in this lab **does not** run directly on your machine.  
-It runs **inside a Docker container**, and all Vault data is stored in a bind-mounted folder.
-
-Before running any Vault commands, you must:
-
-- Install **Docker Desktop**
-- Ensure Docker is running
-- Clone this repository (this automatically creates the required folder structure)
 
 ---
 
@@ -57,58 +39,42 @@ Download VS Code:  see https://code.visualstudio.com/
 ```
 
 ### 2. Install Docker Desktop
-Make sure Vault is running in the Docker container before continuing.
-```
+
 Download from: https://www.docker.com/products/docker-desktop
+```
+After installation, make sure the Vault container is running before continuing.
 ```
 
 ### 3. Clone this project
-Cloning the repo automatically creates the **correct** folder structure.
+This project is designed as a hands-on Vault troubleshooting lab.
+
+To get the most value, clone the repository and follow the exercises locally:
 
 ```bash
-git clone <your-repo>
+git clone https://github.com/yyoung-50/vault-troubleshooting-lab.git
 cd vault-troubleshooting-lab
 ```
+### 4. Run the Lab Setup Script
 
-### 4. Start the Vault container
-This pulls the official Vault image and runs Vault inside Docker.
+Run the lab setup script ** reset-lab.sh" located vault-troubleshooting-lab project folder
 
 ```bash
-docker-compose up -d
+source reset-lab.sh
 ```
-
-### 5. Initialize and unseal Vault
-This script configures Vault for the troubleshooting cases.
+### 5. Confirm Vault is Initialized and Unsealed
 
 ```bash
-chmod +x setup/init-vault.sh
-./setup/init-vault.sh
-```
-
-### 6. Point your CLI to the running Vault server
-Running the **vault status** command verifies that your CLI can reach the Vault server and that Vault is initialized and unsealed
-
-```bash
-export VAULT_ADDR="http://127.0.0.1:8200"
-export VAULT_TOKEN=<root_token>
 vault status
 ```
-### To get a token
-1. Start Vault in dev mode:
-```bash
-vault server -dev
-```
-2. Copy the root token from the output
-3. Export environment variables:
+Vault status output will show:
+Initialized: true
+Sealed: false
 
-```bash
-export VAULT_ADDR="http://127.0.0.1:8200"
-export VAULT_TOKEN=<root_token>
-```
+---
 
 You are now ready to work through the troubleshooting scenarios in the next steps below.
 
-### Troubleshooting-Scenarios
+### Troubleshooting Scenarios
 
 **Working with Scenario files** 
 
@@ -129,15 +95,21 @@ Each scenario file has all of the commands to diagnose and fix the Vault issues:
 If you need more help walking through the scenario files, here's a walk through guide:
 [How to Work Through a Scenario](docs/How-to-Use-this-Lab.md)
 
-After you complete one scenario, run the reset script and set the **VAULT_ADDR** environment variable, then go to the next scenario file:
+After you complete one scenario, run the reset script and check Vault status.
 
 ```bash
-./reset-lab.sh
-```
-```bash
-export VAULT_ADDR="http://127.0.0.1:8200"
+source reset-lab.sh
 vault status
 ```
+- Vault status output will show:
+- Initialized: **true**
+- Sealed: **false**
+
+**Vault is initialized and unsealed.**
+
+Make a note of the role ID, secret ID, and root token for the troubleshooting scenario exercises.
+
+You are now ready to go to the next scenario file:
 
 ### Resetting the Lab 
 
