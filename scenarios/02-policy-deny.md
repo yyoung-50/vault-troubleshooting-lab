@@ -49,7 +49,7 @@ echo $VAULT_TOKEN
 (vault token create -policy="default" -ttl=30m): 
 
 ```bash
-export VAULT_TOKEN=<root_token>
+
 vault kv get kv/app/config
 ```
 It should fail because the default policy which does not allow; reading, writing secrets, creating tokens, managing auth methods.
@@ -93,7 +93,7 @@ After exporting the Token with the new app-policy, you will be able to run the c
 - 
 3. Run both commands:
 ```bash
-export VAULT_TOKEN=<root_token>
+
 vault kv get kv/app/config
 ```
 

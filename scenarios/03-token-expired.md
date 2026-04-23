@@ -32,7 +32,7 @@ vault token create -policy="app-policy" -ttl=30s
 2. Use the token from the command output:
 
 ```bash
-export VAULT_TOKEN="hvs.CAESIFiw4rTsAOCE4ghY
+export VAULT_TOKEN=<root_token>
 vault kv get kv/app/config
 ```
 Command will succeed
