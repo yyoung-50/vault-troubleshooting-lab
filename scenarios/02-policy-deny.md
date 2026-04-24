@@ -109,4 +109,8 @@ Commands succeeds because token has correct policy applied
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/export-kv-get.png)
 
+---
 
+After you complete a scenario run the setup script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+
+You are now ready to go to the next scenario file:

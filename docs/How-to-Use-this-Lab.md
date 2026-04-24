@@ -87,7 +87,7 @@ There are seven Vault troubleshooting topics
 
 - Take a screenshot of the error output and add your own notes.
 
-**3. Diagnose the Problem**
+**3. Diagnose the Issue**
 
 Follow the diagnostic steps in the scenario:
 

@@ -17,7 +17,7 @@ An application using AppRole cannot authenticate to Vault. The login request fai
 - `vault write auth/approle/login ...` returns an error.
 - Application logs show “permission denied” or “invalid role_id/secret_id”.
 
-## Error Output: (see error screenshot below)
+## Error Output:
 
 ```bash
 vault write auth/approle/login role_id="..." secret_id="..."
@@ -26,9 +26,10 @@ vault write auth/approle/login role_id="..." secret_id="..."
 **Reproduce the issue**
 
 1. Ensure Vault is running and initialized:
-This step assumes you ran the **reset-lab.sh** script to start with a fresh environment
+This step assumes you ran the **reset-lab.sh** script
 
-See steps to run script here: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+
 
 2. Try logging in with a wrong Role ID:
 
@@ -41,7 +42,7 @@ vault write auth/approle/login role_id="wrong-role-id" secret_id="$SECRET_ID"
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="wrong-secret-id"
 ```
 
-Result of both commands will fail.
+Result of running both commands will fail.
 
 
 **Diagnose the Problem**
@@ -53,13 +54,15 @@ Key checks:
 
 - Does the role exist at auth/approle/role/app-role?
 
-**Commands to diagnose:**
+**Run these commands to diagnose:**
 
 ```bash 
 vault read auth/approle/role/app-role
 vault read auth/approle/role/app-role/role-id
 vault write -f auth/approle/role/app-role/secret-id
 ```
+
+Output will show that 
 
 **Identify the Root Cause**
 
@@ -107,6 +110,7 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 Note: After generating a new secret ID, you are able to sign on with the command below.
 
 This command authenticates to Vault using the AppRole method and returns a client token for API/CLI access
+
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
@@ -118,5 +122,10 @@ Error output from invalid Secret ID:
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/invalid-role-secret-id.png)
 
-
 **Note:** Screenshots in this lab may show expired or revoked tokens/SecretIDs. These values are safe to display because they are no longer valid.
+
+---
+
+After you complete a scenario run the setup script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+
+You are now ready to go to the next scenario file:

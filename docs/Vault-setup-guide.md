@@ -12,7 +12,7 @@
 
 - A terminal environment (PowerShell, Bash, or VS Code terminal)
 
-- **jq** installed (https://stedolan.github.io/jq/download/)
+- **jq** installed - https://stedolan.github.io/jq/download/
 
 - **Vault CLI tool** (See Step 7 below to install the Vault binary)
 
@@ -146,7 +146,7 @@ You can run the lab from:
 All commands in the lab work the same across environments.
 
 ---
-**7. Install the Vault CLI**  (https://developer.hashicorp.com/vault/docs/get-vault/install-binary)
+**7. Install the Vault CLI** - https://developer.hashicorp.com/vault/docs/get-vault/install-binary
 
 - The Vault CLI runs locally on your machine and communicates with the Vault server running in Docker.
 
@@ -188,3 +188,23 @@ vault --version
 - Return to the main README and follow the steps to get started.
 
 - You can access the Vault UI at http://localhost:8200
+
+### Vault Initialization Script
+
+
+When you run the reset script, Vault is configured as follows:
+
+---
+
+| Check | Command | Expected Result |
+|-------|---------|-----------------|
+| Vault initialized | `vault status` | Initialized: true |
+| Vault unsealed | `vault status` | Sealed: false |
+| KV v2 enabled | `vault secrets list` | kv/ (kv-v2) |
+| AppRole enabled | `vault auth list` | approle/ |
+| Policies loaded | `vault policy list` | app-policy present |
+| AppRole created | `vault list auth/approle/role` | app-role present |
+| Role ID exists | `vault read auth/approle/role/app-role/role-id` | returns ID |
+| Secret ID endpoint works | `vault write -f auth/approle/role/app-role/secret-id` | returns secret_id |
+
+---

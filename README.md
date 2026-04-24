@@ -58,20 +58,22 @@ cd vault-troubleshooting-lab
 ```
 ### 4. Run the Lab Setup Script
 
-Run the lab setup script ** reset-lab.sh" located vault-troubleshooting-lab project folder
+- Run the lab setup script ** reset-lab.sh" (located vault-troubleshooting-lab project folder)
+
+Run these two commands in the terminal:
 
 ```bash
 source reset-lab.sh
-```
-### 5. Confirm Vault is Initialized and Unsealed
-
-```bash
 vault status
 ```
-Vault status output will show:
+Vault status output will show that Vault is initialized and sealed 
 
 - Initialized: true
 - Sealed: false
+
+**Important:** Be sure to save the output from the reset lab script as you will need then later.
+
+- From the script output, save the **role ID**, **secret ID**, and **root token**.
 
 ---
 
@@ -104,7 +106,7 @@ Each scenario includes the commands and solutions needed to diagnose and fix the
 
 - Read the scenario
 - Reproduce the issue
-- Diagnose the problem
+- Diagnose the issue
 - Apply the fix
 - Key findings 
 
@@ -113,33 +115,31 @@ Each scenario includes the commands and solutions needed to diagnose and fix the
 If you need more help walking through the scenario files, here's a walk through guide:
 [How to Work Through a Scenario](docs/How-to-Use-this-Lab.md)
 
-After you complete one scenario, run the reset lab script and check Vault status.
+After you complete a scenario:
+
+- Run the reset lab script and check Vault status. 
+- The reset script sets up Vault so it is initialized, unsealed, and correctly configured.
 
 ```bash
 source reset-lab.sh
 vault status
 ```
-Status will show that Vault is initialized and unsealed
-
-Save the output from the reset lab script in a secure location to use in the troubleshooting scenario exercises. 
+- Status will show that Vault is initialized and unsealed.
+- Save the output from the reset lab script to use in the troubleshooting scenario exercises:
 
 ```bash
 Save the role ID, secret ID, and <root token>
 ```
 You are now ready to go to the next scenario file:
 
-### Resetting the Lab 
-
-**Full detailed reset guide:**  see 👉 [Resetting the Lab](docs/Resetting-the-Lab.md)
-
 ### Additional Resources
 
-- Environment Setup → [Vault Lab Setup](docs/environment-setup.md)
+- What is Vault? → [What is Vault?](https://developer.hashicorp.com/vault/docs/about-vault/what-is-vault?page=what-is-vault)
+- What is Secret Sprawl? → [What is Secret Sprawl?](https://www.hashicorp.com/en/blog/secret-sprawl-is-costing-you-more-than-you-think)
+- Vault Command Reference → [Vault Command Reference](https://developer.hashicorp.com/vault/docs/commands)
+- Vault Troubleshooting → [Troubleshoot Vault](https://developer.hashicorp.com/vault/tutorials/monitoring/troubleshooting-vault)
+- Vault Lab Setup → [Vault Lab Setup](docs/Vault-setup-guide.md)
 - How to Use This Lab → [How to Use this Lab](docs/How-to-Use-this-Lab.md)
-- Resetting the Lab → [Resetting the Lab](docs/Resetting-the-Lab.md)
-- Verify Script → [Verify Script](docs/Verify-script.md)
-- Support Engineer Vault Cheat Sheet [Support Engineer Vault Cheatsheet](docs//Support-Engineer-Cheat-Sheet.md)
-- Top 20 Vault Commands → [Top 20 Vault Commands](docs/Top-20-Vault-Commands.md)
 
 ---
 

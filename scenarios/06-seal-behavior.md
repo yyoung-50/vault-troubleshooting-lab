@@ -1,7 +1,7 @@
 
 ---
 
-## `scenarios/06-seal-behavior.md`
+## Ticket # 456706  - Vault Seal Behavior
 
 ```markdown
 # Scenario 06 – Vault Seal Behavior

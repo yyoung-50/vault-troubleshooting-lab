@@ -101,3 +101,9 @@ Recommended solutions:
   - Ask for the exact ciphertext used.
 
   - Verify key name and rotation status.
+
+---
+
+After you complete a scenario run the setup script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+
+You are now ready to go to the next scenario file:

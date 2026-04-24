@@ -79,3 +79,8 @@ vault read kv/data/app/config
 
 - Many real-world tickets are caused by this exact confusion.
 
+---
+
+After you complete a scenario run the setup script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+
+You are now ready to go to the next scenario file:

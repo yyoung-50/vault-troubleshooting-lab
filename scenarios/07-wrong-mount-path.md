@@ -77,5 +77,9 @@ Note: There is a general confusion between "secret/" and "kv/" mount paths
 - secret/ and kv/ are just different mount names and are in two different locations
 - They behave the same, but store different data
 
+---
 
+After you complete a scenario run the setup script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+
+You are now ready to go to the next scenario file:
 
