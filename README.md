@@ -16,7 +16,6 @@ The goal of this project is to show how to break down and isolate issues. I focu
   <br>
   <em>Example scenario: AppRole authentication failure</em>
 </p>
----
 
 ### Prerequisites 
 No prior Vault setup required. The lab environment is fully automated after setup.
