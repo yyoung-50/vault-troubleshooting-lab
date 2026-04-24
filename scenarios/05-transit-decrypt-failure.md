@@ -23,7 +23,7 @@ An application can encrypt data using the Transit engine but fails to decrypt it
 
 **Reproduce the issue**
 
-1. Enable Transit:
+1. Enable the Transit secrets Engine:
 
 ```bash
 vault secrets enable transit
@@ -37,19 +37,25 @@ vault write -f transit/keys/app-key
 3. Encrypt some data:
 
 ```bash 
-vault write -format=json transit/encrypt/app-key plaintext=$(echo -n "hello" | base64) \
+vault write -format=json transit/encrypt/app-key \ 
+  plaintext=$(echo -n "hello" | base64) \
   | jq -r '.data.ciphertext' > ciphertext.txt
 ```
 4. Corrupt the ciphertext:
 
 ```bash
-sed -i '' 's/./X/' ciphertext.txt  # macOS example; or edit manually
+echo "corrupted" > ciphertext.txt
 ```
+
 5. Try to decrypt:
 
 ```bash
 vault write transit/decrypt/app-key ciphertext="$(cat ciphertext.txt)"
 ```
+
+Command failed because ciphertext has invalid data
+screen
+
 **Diagnose the Problem**
 
 Check:
@@ -60,7 +66,6 @@ Check:
 
 - Is the correct key name used?
 
-
 **Identify the Root Cause**
 
 - Ciphertext was corrupted or modified.
@@ -69,15 +74,29 @@ Check:
 
 **Apply the Fix**
 
+Regenerate the "ciphertext" file
+
+```bash
+vault write -format=json transit/encrypt/app-key \
+  plaintext=$(echo -n "hello" | base64) \
+  | jq -r '.data.ciphertext' > ciphertext.txt
+  ```
+Run the decrypt command:
+
+```bash
+vault write transit/decrypt/app-key ciphertext="$(cat ciphertext.txt)"
+```
+The command was successful as the encrypted data was valid.
+screen
+Recommended solutions:
+
 - Use the original, unmodified ciphertext.
 
 - Ensure the correct key name and version.
 
-**Document Your Takeaways**
+**Key Takeaways**
 
 - Transit is sensitive to ciphertext integrity.
-
-- Support engineers should:
 
   - Ask for the exact ciphertext used.
 

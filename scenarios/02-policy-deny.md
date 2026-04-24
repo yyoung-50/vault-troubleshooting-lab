@@ -87,7 +87,7 @@ vault token create -policy="app-policy" -ttl=30m
 This command creates a new token and attaches the "app-policy", the "default" policy and sets the TTL to 30 minutes.
 
 2. Export the Token from the output of the command. 
-After exporting the Token with the new app-policy, you will be able to run the command.
+After exporting the Token with the new **app-policy**, you will be able to run the command.
 - 
 3. Run both commands:
 
@@ -97,7 +97,7 @@ vault kv get kv/app/config
 ```
 Commands succeeds because token has correct policy applied
 
-**Document Your Takeaways**
+**Key findings**
 
 - Policy issues are one of the most common Vault problems.
 

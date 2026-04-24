@@ -33,7 +33,6 @@ docker-compose restart
 
 ```bash
 export VAULT_ADDR="http://127.0.0.1:8200"
-vault status
 ```
 
 **Diagnose the Problem**
@@ -45,6 +44,8 @@ vault status
 ```
 
 Look for output:
+
+Output shows vault is sealed "Sealed:true"
 
 - Sealed: true
 
@@ -58,7 +59,7 @@ Look for output:
 
 **Apply the Fix**
 
-1. Get the unseal key from the **init.txt** file:
+1. Run the commands to extract the unseal key from "init.txt" and to unseal Vault
 
 ```bash
 UNSEAL_KEY=$(grep 'Unseal Key 1:' init.txt | awk '{print $4}')
@@ -69,11 +70,9 @@ vault operator unseal "$UNSEAL_KEY"
 vault status
 ```
 
-**Document Your Takeaways**
+**Key Findings**
 
 - Sealing is a security feature, not a bug.
-
-- Support engineers should:
 
   - Recognize sealed state quickly.
 

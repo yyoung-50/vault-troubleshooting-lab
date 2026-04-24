@@ -54,7 +54,7 @@ vault-troubleshooting-lab/
 - The root cause
 - The fix and key findings
 
-### How to Work Through a Scenario
+## How to Work Through a Scenario
 
 **Vault Error Topics**
 
@@ -69,7 +69,7 @@ There are seven Vault troubleshooting topics
 7. Wrong Mount Path
 ```
 
-- Each scenario file is a separate exercise and written like a mini ticket. You work on each file independently and reset the lab after each one and go to the next file.  
+- Each scenario file is a separate exercise and written like a mini support ticket. You work on each file independently and reset the lab after each one and go to the next file.  
 
 - All of the commands you need to diagnose and fix the Vault issue are in the file.
 

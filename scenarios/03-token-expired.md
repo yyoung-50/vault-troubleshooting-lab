@@ -23,13 +23,15 @@ An application suddenly loses access to Vault. It worked earlier, but now all re
 ```bash
 vault token lookup
 ```
+TTL for token is 0s
+
 **Reproduce the Issue**
 
 1. Create a short-lived token:
 ```bash
 vault token create -policy="app-policy" -ttl=30s
 ```
-2. Use the token from the command output:
+2. Use the token from the command output and run the commands:
 
 ```bash
 export VAULT_TOKEN=<root_token>
@@ -42,17 +44,22 @@ Command will succeed
 ```bash 
 vault kv get kv/app/config
 ```
-Command will fail
+Command failed at the TTL expiration of 50s after running the command a second time.
 
 **Diagnose the Problem**
 
+4. Create another short-lived token that expires in 50 seconds, and run "vault token lookup". 
 Check the token details:
 
 ```bash
+
+export VAULT_TOKEN=<root token>
+vault token create -policy="app-policy" -ttl=50s
 vault token lookup "<short-lived-token>"
 ```
 
-Look at the output:
+Note: use the <root token> you saved earlier for this test.
+The output shows the TTL is too short:
 
 - ttl
 
@@ -84,7 +91,7 @@ vault token create -policy="app-policy" -ttl=1h
 - Implement token renewal in the application.
 
 
-**Document Your Takeaways**
+**Key findings**
 
 - Token TTL and renewal are critical for stable access.
 

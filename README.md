@@ -5,13 +5,13 @@
 
 # Vault Troubleshooting Lab 
 
-This project is a hands-on HashiCorp Vault troubleshooting lab built around some of the issues I ran into while learning Vault. There are troubleshooting scenarios that present specific errors, along with the commands used, what went wrong, and the step-by-step process to fix them. Each scenario is written like a mini support ticket, similar to what you’d see during a real support call.
+This project is a hands-on HashiCorp Vault troubleshooting lab built around issues I encountered while learning Vault. HashiCorp Vault is used to securely store and manage sensitive data like secrets, tokens, and credentials.
 
-The goal of this project is to show how to break down and isolate issues. I outline the step-by-step process behind troubleshooting that you can apply to Vault or any technical issue.
+The lab includes troubleshooting scenarios that present specific errors, along with the commands used, what went wrong, and the step-by-step process to fix them. Each scenario is written like a mini support ticket, similar to what you’d see during a real support call.
 
-![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/trouble-ticket-small.png)
+The goal of this project is to show how to break down and isolate issues. I focus on the thought process behind troubleshooting so you can apply the same approach to Vault or any technical problem.
 
-**Ticket # 456790 - AppRole Authentication Failure**
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/ticket-number-Approle-03.png)
 
 ---
 
@@ -23,7 +23,7 @@ No prior Vault setup required. The lab environment is fully automated after setu
 - **Vault CLI** (optional installed locally)
 - **jq** installed (for parsing JSON)
 - A terminal environment (Git Bash, WSL, macOS Terminal, etc.)
-- **VS Code** or any code editor (This lab assumes you are running VS Code)
+- **VS Code** or any code editor (VS Code recommended) but all commands are executed in the terminal.
 
 If you need help installing these tools, see the full setup guide below:  
 
@@ -67,55 +67,70 @@ source reset-lab.sh
 vault status
 ```
 Vault status output will show:
-Initialized: true
-Sealed: false
+
+- Initialized: true
+- Sealed: false
 
 ---
 
 You are now ready to work through the troubleshooting scenarios in the next steps below.
 
-### Troubleshooting Scenarios
+### Vault Troubleshooting Scenarios
+
+This lab walks through real-world issues you’ll encounter when working with HashiCorp Vault.
+
+**Vault troubleshooting topics:**
+```
+1. AppRole Authentication Failure
+2. Permission Denied (Policy Issue)
+3. Token Expired (TTL Issue)
+4. KV v2 Path Confusion
+5. Transit Decrypt Failure
+6. Vault Seal Behavior
+7. Wrong Mount Path
+```
 
 **Working with Scenario files** 
 
-- The Vault troubleshooting scenario files are written as small, self‑contained “mini tickets” where Vault is misconfigured. 
+The Vault troubleshooting scenarios are written as short, self-contained “mini support tickets” where Vault is misconfigured. 
 
-- Assuming you are working in VS Code, the files are located in the **scenarios folder** in the **Explorer sidebar** 
+All scenarios are located in the scenarios/ directory. 
 
-Each scenario file has all of the commands to diagnose and fix the Vault issues:
+Each scenario includes the commands and solutions needed to diagnose and fix the issue.
+
+**Follow steps for each scenario:**
 
 - Read the scenario
-- Run through the commands to reproduce the issue
-- Run through the commands to diagnose the problem
-- Run through the commands to apply the fix
-- Key findings and solutions
+- Reproduce the issue
+- Diagnose the problem
+- Apply the fix
+- Key findings 
 
 **Start with Scenario 01:** 👉 Click here: [AppRole Auth Failure](scenarios/01-approle-auth-failure.md)
 
 If you need more help walking through the scenario files, here's a walk through guide:
 [How to Work Through a Scenario](docs/How-to-Use-this-Lab.md)
 
-After you complete one scenario, run the reset script and check Vault status.
+After you complete one scenario, run the reset lab script and check Vault status.
 
 ```bash
 source reset-lab.sh
 vault status
 ```
-- Vault status output will show:
-- Initialized: **true**
-- Sealed: **false**
+Status will show that Vault is initialized and unsealed
 
-**Vault is initialized and unsealed.**
+Save the output from the reset lab script in a secure location to use in the troubleshooting scenario exercises. 
 
-Make a note of the role ID, secret ID, and root token for the troubleshooting scenario exercises.
-
+```bash
+Save the role ID, secret ID, and <root token>
+```
 You are now ready to go to the next scenario file:
 
 ### Resetting the Lab 
 
 **Full detailed reset guide:**  see 👉 [Resetting the Lab](docs/Resetting-the-Lab.md)
 
-### Additional Documentation
+### Additional Resources
 
 - Environment Setup → [Vault Lab Setup](docs/environment-setup.md)
 - How to Use This Lab → [How to Use this Lab](docs/How-to-Use-this-Lab.md)

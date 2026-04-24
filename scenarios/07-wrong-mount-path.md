@@ -18,7 +18,7 @@ A user gets “no handler for route” or similar errors when trying to access a
 - User is calling `secret/...` when engine is mounted at `kv/`.
 - Confusion about mount paths.
 
-## Error Output
+## Error Output running command
 ```bash
 vault secrets list
 ``` 
@@ -36,6 +36,11 @@ vault secrets list
 ```bash
 vault kv get secret/app/config
 ```
+- Error running this command because it is the wrong mount path. 
+- It was confirmed KV is mounted at "kv/" not "secrets/" 
+- Correct command is "vault kv get kv/app/config"
+
+screen
 
 **Diagnose the Problem**
 
@@ -56,13 +61,21 @@ User assumes default path (secret/) but engine is mounted at kv/.
 ```bash
 vault kv get kv/app/config
 ```
+Command is successful because the engine is mounted at kv/
 
-**Document Your Takeaways**
+**Key Findings**
 
 - Mount paths are configurable.
-
-- Support engineers should:
 
   - Ask for vault secrets list output.
 
   - Confirm the exact path being used.
+
+Note: There is a general confusion between "secret/" and "kv/" mount paths
+
+- A mount path is the location where a secrets engine lives
+- secret/ and kv/ are just different mount names and are in two different locations
+- They behave the same, but store different data
+
+
+

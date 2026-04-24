@@ -4,29 +4,33 @@
 ## `scenarios/04-kvv2-path-issue.md`
 
 ```markdown
-# Scenario 04 – KV v2 Path Confusion
+# Scenario 04 – Key-Value (KV) v2 Secrets Engine Path Confusion
 
 ## Summary
 
-A user cannot read a secret from KV v2. They get “no value found at path” even though the secret exists.
+A user cannot read a secret from KV v2. They get “No such file or directory" even though the secret exists.
 
 ---
 
 ## Symptoms
 
-- `vault kv get kv/app/config` fails.
+- `vault kv read kv/app/config` fails.
 - User insists “I wrote the secret already.”
 
 ## Error Output
 - Error: `no value found at kv/app/config`.
+
 ```bash
-kv/app/config
+vault kv read kv/app/config
 ```
 **Reproduce the issue**
 
-1. Ensure KV v2 is enabled at `kv/` (done in setup).
+1. Confirm the version of KV at `kv/` (should be enabled)
+
+
 ```bash
-vault secrets enable -path=kv kv
+vault secrets list --detailed
+
 ```
 
 2. Write a secret:
@@ -39,15 +43,18 @@ vault kv put kv/app/config api_key="super-secret-api-key-03"
 ```bash 
 vault read kv/app/config
 ```
+
+Error output: Invalid path for a versioned K/V secrets engine.
+
 **Diagnose the Problem**
 
-Understand KV v2 paths:
+The issue is for KV v2, either use "vault kv get" or include data in the path.  KV v2 requires /data/ in the API calls:
 
 - CLI vault kv get kv/app/config → handles /data/ internally.
 
 - API path is kv/data/app/config.
 
-Check:
+Check solution:
 
 ```bash 
 vault kv get kv/app/config
@@ -66,7 +73,7 @@ vault read kv/data/app/config
 
 - Use **kv/data/app/config** for API calls.
 
-**Document Your Takeaways**
+**Key Takeaways**
 
 - KV v2 introduces a /data/ and /metadata/ path structure.
 
