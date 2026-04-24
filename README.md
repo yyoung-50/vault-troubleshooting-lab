@@ -98,7 +98,7 @@ This lab walks through real-world issues you’ll encounter when working with Ha
 
 The Vault troubleshooting scenarios are written as short, self-contained “mini support tickets” where Vault is misconfigured. 
 
-All scenarios are located in the scenarios/ directory. 
+Scenarios are located in the scenarios/ directory. 
 
 Each scenario includes the commands and solutions needed to diagnose and fix the issue.
 
@@ -115,21 +115,8 @@ Each scenario includes the commands and solutions needed to diagnose and fix the
 If you need more help walking through the scenario files, here's a walk through guide:
 [How to Work Through a Scenario](docs/How-to-Use-this-Lab.md)
 
-After you complete a scenario:
+After you complete a scenario run the setup script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
 
-- Run the reset lab script and check Vault status. 
-- The reset script sets up Vault so it is initialized, unsealed, and correctly configured.
-
-```bash
-source reset-lab.sh
-vault status
-```
-- Status will show that Vault is initialized and unsealed.
-- Save the output from the reset lab script to use in the troubleshooting scenario exercises:
-
-```bash
-Save the role ID, secret ID, and <root token>
-```
 You are now ready to go to the next scenario file:
 
 ### Additional Resources
