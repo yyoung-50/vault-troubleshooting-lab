@@ -11,10 +11,10 @@ The lab includes troubleshooting scenarios that present specific errors, along w
 
 The goal of this project is to show how to break down and isolate issues. I focus on the thought process behind troubleshooting so you can apply the same approach to Vault or any technical problem.
 
-<p align="center">
+<p align="left">
   <img src="screenshots/scenario01/ticket-number-Approle-03.png" width="500">
   <br>
-  <em>Example scenario: AppRole authentication failure</em>
+  <em>Example troubleshooting scenario: AppRole authentication failure</em>
 </p>
 
 ### Prerequisites 
