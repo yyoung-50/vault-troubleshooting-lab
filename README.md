@@ -29,7 +29,7 @@ No prior Vault setup required. The lab environment is fully automated after setu
 
 If you need help installing these tools, see the full setup guide below:  
 
-[Vault Setup Guide](./docs/environment-setup.md)
+[Vault Setup Guide](./docs/Vault-setup-guide.md)
 
 ---
 

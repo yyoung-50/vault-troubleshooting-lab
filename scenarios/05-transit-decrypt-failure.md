@@ -1,7 +1,7 @@
 
 ---
 
-## `scenarios/05-transit-decrypt-failure.md`
+## Ticket # 456705  - Transit Decrypt Failure
 
 ```markdown
 # Scenario 05 – Transit Decrypt Failure

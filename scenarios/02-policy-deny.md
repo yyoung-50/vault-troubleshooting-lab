@@ -1,7 +1,7 @@
 
 ---
 
-## `scenarios/02-policy-deny.md`
+## Ticket # 456702  - Permission Denied (Policy Issue)
 
 ```markdown
 # Scenario 02 – Permission Denied (Policy Issue)

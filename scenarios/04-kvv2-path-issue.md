@@ -1,10 +1,10 @@
 
 ---
 
-## `scenarios/04-kvv2-path-issue.md`
+## Ticket # 456704  - Secrets Engine Path Confusion
 
 ```markdown
-# Scenario 04 – Key-Value (KV) v2 Secrets Engine Path Confusion
+# Scenario 04 – Key-Value (KV) Secrets Engine Path Confusion
 
 ## Summary
 

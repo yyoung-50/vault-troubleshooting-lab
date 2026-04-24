@@ -1,7 +1,7 @@
 
 ---
 
-## `scenarios/07-wrong-mount-path.md`
+## Ticket # 456707 - Wrong Mount Path
 
 ```markdown
 # Scenario 07 – Wrong Mount Path

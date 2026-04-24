@@ -58,7 +58,7 @@ No additional configuration is required.
 ---
 **macOS**
 
-Install Docker Desktop for Mac:
+**Install Docker Desktop for Mac:**
 
 - Download from: https://www.docker.com/products/docker-desktop 
 
@@ -146,7 +146,7 @@ You can run the lab from:
 All commands in the lab work the same across environments.
 
 ---
-**7. Install the Vault CLI**
+**7. Install the Vault CLI**  (https://developer.hashicorp.com/vault/docs/get-vault/install-binary)
 
 - The Vault CLI runs locally on your machine and communicates with the Vault server running in Docker.
 
@@ -185,6 +185,6 @@ vault --version
 
 - You are now ready to run the Vault Troubleshooting Lab.
 
-- Return to the main README  and follow the steps to get started.
+- Return to the main README and follow the steps to get started.
 
 - You can access the Vault UI at http://localhost:8200

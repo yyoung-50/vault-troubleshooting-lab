@@ -1,7 +1,7 @@
 
 ---
 
-## `scenarios/03-token-expired.md`
+## Ticket # 456703  - Token Expired (TTL Issue)
 
 ```markdown
 # Scenario 03 – Token Expired (TTL Issue)
