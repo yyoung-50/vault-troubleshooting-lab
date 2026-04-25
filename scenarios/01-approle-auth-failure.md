@@ -93,7 +93,7 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
 **Result:** Logging in with the correct values generated from the previous commands resolves the issue
 
-**Key findings**
+**Key findings**  
 
 - AppRole auth depends on both a valid role_id and secret_id.
 
