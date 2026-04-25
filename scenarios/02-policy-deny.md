@@ -88,7 +88,7 @@ This command creates a new token and attaches the "app-policy", the "default" po
 
 2. Export the Token from the output of the command. 
 After exporting the Token with the new **app-policy**, you will be able to run the command.
-- 
+
 3. Run both commands:
 
 ```bash
