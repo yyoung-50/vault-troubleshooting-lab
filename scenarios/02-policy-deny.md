@@ -24,9 +24,11 @@ A token cannot read a secret from `kv/app/config` even though the user believes 
 vault kv get kv/app/config
 # Error reading kv/app/config: permission denied
 
-<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-get-error.png" width="500">
 ```
 
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-policy-default" width="500">
+
+---
 **Reproduce the issue**
 
 1. Create a token with a restricted policy, "default"(simulating a misconfigured policy):
@@ -34,13 +36,13 @@ vault kv get kv/app/config
 ```bash
 vault token create -policy="default" -ttl=30m
 ```
+Output of this command creates a token with a policy named "default".
 
-"URL: POST http://127.0.0.1:8200/v1/auth/token/create
-Code: 403. Errors:"
+
 
 
 2. Export the token from the command in Step 1 
-(vault token create -policy="default" -ttl=30m): 
+
 
 3. Run the command below with the token with the restricted policy
 
