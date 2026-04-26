@@ -26,7 +26,7 @@ vault kv get kv/app/config
 
 ```
 
-<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-policy-default" width="500">
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-policy-default.png" width="500">
 
 ---
 **Reproduce the issue**
