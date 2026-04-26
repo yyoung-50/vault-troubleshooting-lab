@@ -26,9 +26,6 @@ vault kv get kv/app/config
 
 ```
 
-<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-policy-default.png" width="500">
-
----
 **Reproduce the issue**
 
 1. Create a token with a restricted policy, "default"(simulating a misconfigured policy):
@@ -38,7 +35,7 @@ vault token create -policy="default" -ttl=30m
 ```
 Output of this command creates a token with a policy named "default".
 
-
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-policy-default.png" width="500">
 
 
 2. Export the token from the command in Step 1 
