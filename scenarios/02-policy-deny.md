@@ -24,6 +24,7 @@ A token cannot read a secret from `kv/app/config` even though the user believes 
 vault kv get kv/app/config
 # Error reading kv/app/config: permission denied
 
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-get-error.png" width="500">
 ```
 
 **Reproduce the issue**
