@@ -26,6 +26,7 @@ vault write auth/approle/login role_id="..." secret_id="..."
 **Reproduce the issue**
 
 1. Ensure Vault is running and initialized:
+
 This step assumes you ran the **reset-lab.sh** script
 
 See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)

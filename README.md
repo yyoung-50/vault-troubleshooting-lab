@@ -58,7 +58,7 @@ cd vault-troubleshooting-lab
 ```
 ### 4. Run the Lab Setup Script
 
-- Run the lab setup script ** reset-lab.sh" (located vault-troubleshooting-lab project folder)
+- Run the lab setup script **reset-lab.sh** (located vault-troubleshooting-lab project folder)
 
 Run these two commands in the terminal:
 
