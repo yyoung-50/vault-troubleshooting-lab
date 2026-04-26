@@ -45,9 +45,7 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="wrong-secret-id"
 
 Result of running both commands will fail.
 
-<p align="left">
-  <img src="screenshots/scenario01/wrong-secret-id.png" width="500">
-</p>
+<img src="screenshots/scenario01/wrong-secret-id.png" width="500" align="left">
 
 **Diagnose the Problem**
 
