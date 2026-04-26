@@ -25,10 +25,21 @@ vault kv get kv/app/config
 # Error reading kv/app/config: permission denied
 
 ```
+1. Run the command:
+
+```bash
+vault kv get kv/app/config
+```
+Command will succeed and retrieve a secrets stored in Vault at that path:
+
+Key        Value
+---        -----
+api_key    super-secret-api-key
+env        dev
 
 **Reproduce the issue**
 
-1. Create a token with a restricted policy, "default"(simulating a misconfigured policy):
+2. Create a token with a restricted policy, "default"(simulating a misconfigured policy):
 
 ```bash
 vault token create -policy="default" -ttl=30m
@@ -38,10 +49,13 @@ Output of this command creates a token with a policy named "default".
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-policy-default.png" width="500">
 
 
-2. Export the token from the command in Step 1 
+3. Export the token from the output of the command in Step 1 
 
+```bash
+export VAULT_TOKEN="token"
+```
 
-3. Run the command below with the token with the restricted policy
+4. Run the command below with the restricted policy
 
 ```bash
 vault kv get kv/app/config
@@ -72,8 +86,7 @@ The "app-policy" allows "read" and "list" so will be able to run the **vault kv 
 
 **Identify the Root Cause**
 
-- The token does not have the app-policy attached. 
-Confirmed by output of command "vault token lookup"
+- The token does not have the app-policy attached, and this was confirmed by the output of the command "vault token lookup"
 
 - Or the policy path is wrong (e.g., kv/app/* instead of kv/data/app/* for KV v2).
 
@@ -87,6 +100,10 @@ vault token create -policy="app-policy" -ttl=30m
 This command creates a new token and attaches the "app-policy", the "default" policy and sets the TTL to 30 minutes.
 
 2. Export the Token from the output of the command. 
+
+```bash
+export VAULT_TOKEN=<token>
+```
 
 After exporting the Token with the new **app-policy**, you will be able to run the command.
 
