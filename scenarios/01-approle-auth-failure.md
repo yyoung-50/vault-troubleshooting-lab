@@ -45,6 +45,9 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="wrong-secret-id"
 
 Result of running both commands will fail.
 
+<p align="left">
+  <img src="screenshots/scenario01/wrong-secret-id.png" width="400">
+</p>
 
 **Diagnose the Problem**
 
@@ -63,7 +66,7 @@ vault read auth/approle/role/app-role/role-id
 vault write -f auth/approle/role/app-role/secret-id
 ```
 
-Output will show that 
+Output from running these commands will show that 
 
 **Identify the Root Cause**
 
@@ -92,7 +95,7 @@ vault write -format=json -f auth/approle/role/app-role/secret-id \
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
-**Result:** Logging in with the correct values generated from the previous commands resolves the issue
+**Result:** Logging in with the correct Role ID and Secret ID resolves the issue.
 
 **Key findings**  
 
