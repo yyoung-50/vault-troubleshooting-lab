@@ -75,9 +75,9 @@ Vault status output will show that Vault is initialized and sealed
 
 - From the script output, save the **role ID**, **secret ID**, and **root token**.
 
----
-
 You are now ready to work through the troubleshooting scenarios in the next steps below.
+
+---
 
 ### Vault Troubleshooting Scenarios
 
