@@ -47,6 +47,7 @@ Result of running both commands will fail.
 
 <img src="screenshots/scenario01/wrong-secret-id.png" width="500" align="left">
 
+
 **Diagnose the Problem**
 
 Key checks:
