@@ -132,7 +132,11 @@ This command authenticates to Vault using the AppRole method and returns a clien
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
-Successful authentication:
+This command authenticates to Vault using AppRole
+- It sends the role-id and secret_id to Vault
+- Vault returns a client token.
+
+Successful authentication to Vault using AppRole authentication method
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/correct-login-output.png" width="500">
 
