@@ -50,7 +50,7 @@ Result of running both commands will fail.
 
 **Diagnose the Problem**
 
-Key checks:
+Key questions:
 - Is the role_id correct?
 
 - Is the secret_id correct and not expired?
@@ -65,7 +65,12 @@ vault read auth/approle/role/app-role/role-id
 vault write -f auth/approle/role/app-role/secret-id
 ```
 
-Output from running these commands will show that 
+The purpose of running these three commands are to:
+- Inspect how the AppRole is configured
+- Generate a role-id
+- Generate a secret-id 
+
+Use case for these commands are for manual inspection / debugging.
 
 **Identify the Root Cause**
 
@@ -75,25 +80,35 @@ Output from running these commands will show that
 
 **Apply the Fix**
 
-1. Retrieve the correct Role ID:
+Run these commands to generate a Role-ID and Secret-ID
+
+**1. Retrieve the correct Role ID:**
 
 ```bash
 vault read -format=json auth/approle/role/app-role/role-id \
   | jq -r '.data.role_id'
 ```
 
-2. Generate a new Secret ID:
+**2. Generate a new Secret ID:**
 
 ```bash
 vault write -format=json -f auth/approle/role/app-role/secret-id \
   | jq -r '.data.secret_id'
 ```
+Output from Steps 1 and 2 generate a new Role ID and Secret ID. The use case for returning output in JSON format is to use it in scripting/automation.
 
-3. Login with the correct values:
+**3. Login with the correct values:**
+
+Run the commands again with the correct Role-ID and Secret-ID generated in the previous commands.
 
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
+- You can either export the role_id and secret_id as variables for reuse, or pass them directly into the login command. In real workflows, variables are cleaner and more efficient.
+
+- For this exercise, you can pass them directly into the login command.
+
+
 **Result:** Logging in with the correct Role ID and Secret ID resolves the issue.
 
 **Key findings**  
@@ -119,13 +134,7 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
 Successful authentication:
 
-![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/correct-login-output.png)
-
-Error output from invalid Secret ID:
-
-![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/invalid-role-secret-id.png)
-
-**Note:** Screenshots in this lab may show expired or revoked tokens/SecretIDs. These values are safe to display because they are no longer valid.
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/wrong-secret-id.png" width="500">
 
 ---
 
