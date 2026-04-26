@@ -34,11 +34,13 @@ See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-scr
 
 2. Try logging in with a wrong Role ID:
 
+Run:
 ```bash 
 vault write auth/approle/login role_id="wrong-role-id" secret_id="$SECRET_ID"
 ```
 3. Try logging in with a wrong Secret ID:
 
+Run:
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="wrong-secret-id"
 ```
@@ -59,6 +61,7 @@ Key questions:
 
 **Run these commands to diagnose:**
 
+Run:
 ```bash 
 vault read auth/approle/role/app-role
 vault read auth/approle/role/app-role/role-id
@@ -84,6 +87,7 @@ Run these commands to generate a Role-ID and Secret-ID
 
 **1. Retrieve the correct Role ID:**
 
+Run:
 ```bash
 vault read -format=json auth/approle/role/app-role/role-id \
   | jq -r '.data.role_id'
@@ -91,6 +95,7 @@ vault read -format=json auth/approle/role/app-role/role-id \
 
 **2. Generate a new Secret ID:**
 
+Run:
 ```bash
 vault write -format=json -f auth/approle/role/app-role/secret-id \
   | jq -r '.data.secret_id'
@@ -129,6 +134,7 @@ Note: After generating a new secret ID, you are able to sign on with the command
 
 This command authenticates to Vault using the AppRole method and returns a client token for API/CLI access
 
+Run:
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
