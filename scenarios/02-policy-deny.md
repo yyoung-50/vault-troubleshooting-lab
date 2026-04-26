@@ -32,6 +32,7 @@ vault kv get kv/app/config
 ```
 Command will succeed and retrieve a secrets stored in Vault at that path:
 
+Output:
 Key        Value
 ---        -----
 api_key    super-secret-api-key
@@ -41,26 +42,27 @@ env        dev
 
 2. Create a token with a restricted policy, "default"(simulating a misconfigured policy):
 
+Run:
 ```bash
 vault token create -policy="default" -ttl=30m
 ```
 Output of this command creates a token with a policy named "default".
 
+- Save the token for the next step.
+
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-policy-default.png" width="500">
 
+3. Export the token from the output of the command in Step 2 
 
-3. Export the token from the output of the command in Step 1 
-
+Run:
 ```bash
 export VAULT_TOKEN="token"
-```
-
-4. Run the command below with the restricted policy
-
-```bash
 vault kv get kv/app/config
 ```
+
 It should fail because the default policy which does not allow; reading, writing secrets, creating tokens, managing auth methods.
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-get-error.png" width="500">
 
 **Diagnose the Problem**
 
@@ -69,7 +71,7 @@ It should fail because the default policy which does not allow; reading, writing
 ```bash
 vault token lookup
 ```
-This command shows the "default" policy which is restrictive, so command fails.
+This command shows the "default" policy which is restrictive, so the command failed.
 
 (screen here)
 
