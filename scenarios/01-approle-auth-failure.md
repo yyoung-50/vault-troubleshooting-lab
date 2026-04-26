@@ -83,11 +83,10 @@ Use case for these commands are for manual inspection / debugging.
 
 **Apply the Fix**
 
-Run these commands to generate a Role-ID and Secret-ID
+Run these commands below to generate a Role-ID and Secret-ID
 
 **1. Retrieve the correct Role ID:**
 
-Run:
 ```bash
 vault read -format=json auth/approle/role/app-role/role-id \
   | jq -r '.data.role_id'
@@ -95,7 +94,6 @@ vault read -format=json auth/approle/role/app-role/role-id \
 
 **2. Generate a new Secret ID:**
 
-Run:
 ```bash
 vault write -format=json -f auth/approle/role/app-role/secret-id \
   | jq -r '.data.secret_id'
@@ -112,7 +110,6 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 - You can either export the role_id and secret_id as variables for reuse, or pass them directly into the login command. In real workflows, variables are cleaner and more efficient.
 
 - For this exercise, you can pass them directly into the login command.
-
 
 **Result:** Logging in with the correct Role ID and Secret ID resolves the issue.
 
@@ -132,17 +129,14 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 
 Note: After generating a new secret ID, you are able to sign on with the command below.
 
-This command authenticates to Vault using the AppRole method and returns a client token for API/CLI access
+This command authenticates to Vault using the AppRole method and returns a client token for API/CLI access, role-id and secret-id.
 
 Run:
 ```bash
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
-This command authenticates to Vault using AppRole
-- It sends the role-id and secret_id to Vault
-- Vault returns a client token.
 
-Successful authentication to Vault using AppRole authentication method
+Result is successful authentication to Vault using AppRole authentication method
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/correct-login-output.png" width="500">
 
