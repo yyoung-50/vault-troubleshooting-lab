@@ -98,7 +98,7 @@ vault kv get kv/app/config
 ```
 Commands succeeds because token has correct policy applied
 
-![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/vault-app-policy.png)
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/export-kv-get.png)
 
 **Key findings**
 
