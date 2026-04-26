@@ -134,7 +134,7 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 ```
 Successful authentication:
 
-<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/wrong-secret-id.png" width="500">
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/correct-login-output.png" width="500">
 
 ---
 
