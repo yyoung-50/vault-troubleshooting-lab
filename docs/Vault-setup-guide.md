@@ -218,6 +218,8 @@ When you run the lab reset script it configures Vault as follows:
    - Check that the container is running on Docker desktop.
    - Restart the container
 
+The script will start running
+
   <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/waiting-for-vault.png" width="500">
 
 ---
