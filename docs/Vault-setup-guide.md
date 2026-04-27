@@ -207,4 +207,6 @@ When you run the lab reset script it configures Vault as follows:
 | Role ID exists | `vault read auth/approle/role/app-role/role-id` | returns ID |
 | Secret ID endpoint works | `vault write -f auth/approle/role/app-role/secret-id` | returns secret_id |
 
+
+ - See the lab folder structure for key files -  [Lab Folder Structure](How-to-Use-this-Lab.md#lab-folder-structure)
 ---
