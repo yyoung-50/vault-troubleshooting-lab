@@ -53,7 +53,9 @@ cd vault-troubleshooting-lab
 ```
 ### 4. Run the Lab Setup Script
 
-- Run the lab setup script **reset-lab.sh** (located vault-troubleshooting-lab project folder)
+- Run the lab setup script **reset-lab.sh** 
+- If you get an error running the script, check the container is running and restart the container.
+[Lab Setup Script Error](docs/Vault-setup-guide.md#lab-setup-script-error)
 
 Run these two commands in the terminal:
 
