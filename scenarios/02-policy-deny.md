@@ -115,6 +115,8 @@ The "app-policy" allows "read" and "list" so will be able to run the **vault kv 
 
 **Apply the Fix**
 
+The fix is to attach a policy with more permissions.
+
 1. Attach a new policy to the token called "app-policy":
 
 Run:

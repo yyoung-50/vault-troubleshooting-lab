@@ -22,7 +22,9 @@ A user cannot read a secret from KV v2. They get “No such file or directory" e
 
 ```bash
 vault kv read kv/app/config
+# Error running this command
 ```
+
 1. Ensure Vault is running and initialized:
 
 - This step assumes you ran the **reset-lab.sh** script.  See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)

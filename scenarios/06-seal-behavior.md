@@ -30,6 +30,7 @@ Vault appears “down” or “unavailable” after a restart. Users cannot acce
 
 1. Restart the container:
 
+Run:
 ```bash
 docker-compose restart
 ```
@@ -37,8 +38,11 @@ docker-compose restart
 2. Try a command:
 
 ```bash
-export VAULT_ADDR="http://127.0.0.1:8200"
+vault secrets list
 ```
+Error output saying **Vault is sealed**
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/vault-sealed.png" width="500">
 
 **Diagnose the Problem**
 
@@ -47,14 +51,11 @@ Check status of Vault:
 ```bash
 vault status
 ```
-
 Look for output:
 
 Output shows vault is sealed "Sealed:true"
 
-- Sealed: true
-
-- Key Shares
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/vault-sealed-output.png" width="500">
 
 **Identify the Root Cause**
 
@@ -64,16 +65,22 @@ Output shows vault is sealed "Sealed:true"
 
 **Apply the Fix**
 
-1. Run the commands to extract the unseal key from "init.txt" and to unseal Vault
+1. Run the commands to extract the unseal key from "init.txt" and to unseal Vault (init.txt already created)
 
+Run:
 ```bash
 UNSEAL_KEY=$(grep 'Unseal Key 1:' init.txt | awk '{print $4}')
 vault operator unseal "$UNSEAL_KEY"
 ```
+
 2. Verify Vault status
+
 ```bash
 vault status
 ```
+Output now shows that Vault is unsealed.
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/vault-unsealed.png" width="500">
 
 **Key Findings**
 

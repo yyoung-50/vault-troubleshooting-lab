@@ -22,7 +22,7 @@ An application suddenly loses access to Vault. It worked earlier, but now all re
 
 ```bash
 vault token lookup
-- TTL for token is 0s
+# TTL for token is 0s
 ```
 1. Ensure Vault is running and initialized:
 

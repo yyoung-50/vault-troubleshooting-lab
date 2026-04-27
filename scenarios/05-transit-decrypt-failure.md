@@ -29,40 +29,49 @@ An application can encrypt data using the Transit engine but fails to decrypt it
 
 1. Enable the Transit secrets Engine:
 
+Run:
 ```bash
 vault secrets enable transit
 ```
 
 2. Create a key:
 
+Run:
 ```bash
 vault write -f transit/keys/app-key
 ```
+Output confirms key was created:
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/transit-encryption-key.png" width="500">
+
 3. Encrypt some data:
 
 ```bash 
-vault write -format=json transit/encrypt/app-key \ 
+vault write -format=json transit/encrypt/app-key \
   plaintext=$(echo -n "hello" | base64) \
   | jq -r '.data.ciphertext' > ciphertext.txt
 ```
+Output from this command creates a file called "ciphertext.txt" in your current directory.
+
 4. Corrupt the ciphertext:
 
 ```bash
 echo "corrupted" > ciphertext.txt
 ```
 
-5. Try to decrypt:
+5. Run decrypt:
 
 ```bash
 vault write transit/decrypt/app-key ciphertext="$(cat ciphertext.txt)"
 ```
 
 Command failed because ciphertext has invalid data
-screen
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/cannot-decrypt.png" width="500">
 
 **Diagnose the Problem**
 
-Check:
+Verify the following:
 
 - Is the ciphertext intact?
 
@@ -80,18 +89,22 @@ Check:
 
 Regenerate the "ciphertext" file
 
+Run:
 ```bash
 vault write -format=json transit/encrypt/app-key \
   plaintext=$(echo -n "hello" | base64) \
   | jq -r '.data.ciphertext' > ciphertext.txt
   ```
+
 Run the decrypt command:
 
 ```bash
 vault write transit/decrypt/app-key ciphertext="$(cat ciphertext.txt)"
 ```
-The command was successful as the encrypted data was valid.
-screen
+The decryption was successful as the encrypted data was valid.
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/decrypt-successful.png" width="500">
+
 Recommended solutions:
 
 - Use the original, unmodified ciphertext.

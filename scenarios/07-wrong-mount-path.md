@@ -34,6 +34,9 @@ vault secrets list
 ```bash
 vault secrets list
 ```
+Output confirms KV is mounted at `kv/`:
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/mounted-at-kv.png" width="500">
 
 2. Try to read using the wrong path:
 
@@ -42,13 +45,13 @@ vault kv get secret/app/config
 ```
 - Error running this command because it is the wrong mount path. 
 - It was confirmed KV is mounted at "kv/" not "secrets/" 
-- Correct command is "vault kv get kv/app/config"
+- Correct command is **vault kv get kv/app/config**
 
-screen
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/get-secret-error.png" width="500">
 
 **Diagnose the Problem**
 
-Check:
+Verify the following:
 
 - Where is the engine actually mounted?
 
@@ -56,7 +59,7 @@ Check:
 
 **Identify the Root Cause**
 
-User assumes default path (secret/) but engine is mounted at kv/.
+User assumes default path (secret/) but engine is mounted at kv/.  Therefore, the command, **vault kv get secret/app/config** is using an incorrect mount path **`secret/`**.
 
 **Apply the Fix**
 
@@ -65,7 +68,7 @@ User assumes default path (secret/) but engine is mounted at kv/.
 ```bash
 vault kv get kv/app/config
 ```
-Command is successful because the engine is mounted at kv/
+Command is retrieves secrets successfully because the engine is mounted at kv/
 
 **Key Findings**
 
