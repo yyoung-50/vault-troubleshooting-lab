@@ -30,10 +30,14 @@ vault kv get kv/app/config
 
 1. After running the lab reset script, run the command: -   [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
 
+After running the reset script, save the output to use the **Root token** in later exercises.
+
+Run:
 ```bash
 vault kv get kv/app/config
 ```
-Command will succeed and retrieve a secrets stored in Vault at that path:
+- Command succeeds because root token has full permission access.
+- Command succeeds and retrieve a secrets stored in Vault at that path:
 
 Output:
 Key        Value
@@ -57,13 +61,13 @@ Output of this command creates a token with a policy named "default".
 
 3. Export the token from the output of the previous Step 2.
 
-Run:
+Run two commands:
 ```bash
 export VAULT_TOKEN="token"
 vault kv get kv/app/config
 ```
 
-It should fail because the default policy attached to the token.  This does not allow; reading, writing secrets, creating tokens, managing auth methods.
+It should fail because the default policy attached to the token.  This policy does not allow; reading, writing secrets, creating tokens, managing auth methods.
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-get-error.png" width="500">
 
@@ -75,51 +79,62 @@ Run:
 ```bash
 vault token lookup
 ```
-This command shows the "default" policy which is restrictive, so the command failed.
+This command shows the "default" policy which is restrictive, so the previous command failed.
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-lookup-default.png" width="500">
 
-2. Run command below to see what the app-policy allows?
+2. Switch back to the Root token. (Token was saved when you ran the "lab setup" script at the beginning of this exercise.)
 
+The root token has sufficient permissions to inspect policies and create a new token.
+
+Run:
+```bash
+export VAULT_TOKEN=<root_token>
+```
+
+3. Check the existing "app-policy" has the correct permissions.
+
+Run:
 ```bash
 vault policy read app-policy
 ```
 The "app-policy" allows "read" and "list" so will be able to run the **vault kv get kv/app/config** command
 
-![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/vault-app-policy.png)
-
-3. Is the token actually using app-policy?
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/vault-app-policy.png) 
 
 **Identify the Root Cause**
 
-- The token does not have the app-policy attached, and this was confirmed by the output of the command "vault token lookup"
+- The command "vault kv get kv/app/config" failed because the token did not have sufficient permissions.
+
+- The token does not have the app-policy attached as confirmed by the output of the command "vault token lookup"
 
 - Or the policy path is wrong (e.g., kv/app/* instead of kv/data/app/* for KV v2).
 
 **Apply the Fix**
 
-1. Create a new policy called "app-policy":
+1. Attach a new policy to the token called "app-policy":
 
+Run:
 ```bash
 vault token create -policy="app-policy" -ttl=30m
 ```
 This command creates a new token and attaches the "app-policy", the "default" policy and sets the TTL to 30 minutes.
 
-2. Export the Token from the output of the command. 
+2. Export the token from the output of the previous command. 
 
+Run:
 ```bash
 export VAULT_TOKEN=<token>
 ```
 
 After exporting the Token with the new **app-policy**, you will be able to run the command.
 
-3. Run both commands:
+3. Run:
 
 ```bash
-export VAULT_TOKEN=<root_token> 
 vault kv get kv/app/config
 ```
-Commands succeeds because token has correct policy applied
+Command succeeds because token has correct policy applied
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/export-kv-get.png)
 
