@@ -1,8 +1,3 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Work_in_Progress-yellow" width="220">
-</p>
-
-
 # Vault Troubleshooting Lab 
 
 This project is a hands-on HashiCorp Vault troubleshooting lab built around issues I encountered while learning Vault. HashiCorp Vault is used to securely store and manage sensitive data like secrets, tokens, and credentials.
