@@ -52,19 +52,19 @@ vault kv put kv/app/config api_key="super-secret-api-key-03"
 vault read kv/app/config
 ```
 
-Error output: Invalid path for a versioned K/V secrets engine.
+Error output: Invalid path for a versioned KV secrets engine.
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-read-wrong-path.png" width="500">
 
 **Diagnose the Problem**
 
-The issue is for KV v2, either use "vault kv get" or include data in the path.  KV v2 requires /data/ in the API calls:
+The issue is for KV v2, either use "vault kv get" or include data in the path.  
 
 - CLI vault kv get kv/app/config → handles /data/ internally.
 
-- API path is kv/data/app/config.
+- API path is kv/data/app/config. KV v2 requires /data/ in the path for a direct request to Vault using its exact internal API path.
 
-Check solution:
+Run the two commands using the correct paths for KV v2:
 
 ```bash 
 vault kv get kv/app/config
@@ -79,9 +79,13 @@ vault read kv/data/app/config
 
 **Apply the Fix**
 
-- Use vault **kv get kv/app/config** with the CLI.
+Correct command structure:
 
-- Use **kv/data/app/config** for API calls.
+- Use **vault kv get kv/app/config** with the CLI.
+
+- Use **vault read kv/data/app/config** for API calls.
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/vault-read-kv-data.png" width="500">
 
 **Key Takeaways**
 
