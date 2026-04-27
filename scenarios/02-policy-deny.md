@@ -77,7 +77,7 @@ vault token lookup
 ```
 This command shows the "default" policy which is restrictive, so the command failed.
 
-<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-get-error.png" width="500">
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-lookup-default.png" width="500">
 
 2. Run command below to see what the app-policy allows?
 
