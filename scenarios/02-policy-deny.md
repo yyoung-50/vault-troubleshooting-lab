@@ -19,13 +19,16 @@ A token cannot read a secret from `kv/app/config` even though the user believes 
 - User insists “the policy looks correct.”
 
 ## Error Output:
- 
+
+Running the command below outputs "permission denied"
+
 ```bash
 vault kv get kv/app/config
 # Error reading kv/app/config: permission denied
 
 ```
-1. Run the command:
+
+1. After running the lab reset script, run the command: -   [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
 
 ```bash
 vault kv get kv/app/config
