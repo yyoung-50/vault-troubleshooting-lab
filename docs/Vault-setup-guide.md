@@ -192,7 +192,7 @@ vault --version
 ### Vault Initialization Script
 
 
-When you run the reset script, Vault is configured as follows:
+When you run the reset script (reset-lab.sh) it runs a script called **"**init-vault.sh**, and configures Vault as follows:
 
 ---
 
