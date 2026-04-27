@@ -2,9 +2,9 @@
 
 This project is a hands-on HashiCorp Vault troubleshooting lab built around issues I encountered while learning Vault. HashiCorp Vault is used to securely store and manage sensitive data like secrets, tokens, and credentials.
 
-The lab includes troubleshooting scenarios that present specific errors, along with the commands used, what went wrong, and the step-by-step process to fix them. Each scenario is written like a mini support ticket, similar to what you’d see during a real support call.
+The lab includes troubleshooting scenarios that present specific errors, along with the commands used, what went wrong, and the step-by-step process to fix them. Each scenario is written like a mini support ticket, similar to what engineers see during a real support call.
 
-The goal of this project is to show how to break down and isolate issues. I focus on the thought process behind troubleshooting so you can apply the same approach to Vault or any technical issues.
+The goal of this project is to walk through diagnosing and isolating Vault issues step‑by‑step in a ticket‑style format. It also shows the troubleshooting thought proces that you can apply to Vault or technical issues in general.
 
 <p align="left">
   <img src="screenshots/scenario01/ticket-number-Approle-03.png" width="500">
