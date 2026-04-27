@@ -21,6 +21,11 @@ Vault appears “down” or “unavailable” after a restart. Users cannot acce
 ## Error Output
 `Vault is sealed`.
 ```
+1. Ensure Vault is running and initialized:
+
+- This step assumes you ran the **reset-lab.sh** script.  See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+- After running the reset script, save the output to use the **Root token** in later exercises.
+
 **Reproduce the issue**
 
 1. Restart the container:

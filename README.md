@@ -71,7 +71,7 @@ Vault status output will show that Vault is initialized and sealed
 - Initialized: true
 - Sealed: false
 
-**Important:** Be sure to save the output from the reset lab script as you will need then later.
+**Important:** Be sure to save the output from the reset lab script as you will need the "Root token"
 
 - From the script output, save the **role ID**, **secret ID**, and **root token**.
 

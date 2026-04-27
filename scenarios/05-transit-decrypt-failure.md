@@ -20,6 +20,10 @@ An application can encrypt data using the Transit engine but fails to decrypt it
 - Error mentions invalid ciphertext or key version.
 - Encryption appears to work fine.
 ```
+1. Ensure Vault is running and initialized:
+
+- This step assumes you ran the **reset-lab.sh** script.  See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+- After running the reset script, save the output to use the **Root token** in later exercises.
 
 **Reproduce the issue**
 

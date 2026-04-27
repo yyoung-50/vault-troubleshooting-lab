@@ -28,9 +28,12 @@ vault kv get kv/app/config
 
 ```
 
-1. After running the lab reset script, run the command: -   [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+1. Ensure Vault is running and initialized:
 
-After running the reset script, save the output to use the **Root token** in later exercises.
+- This step assumes you ran the **reset-lab.sh** script.  See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+- After running the reset script, save the output to use the **Root token** in later exercises.
+
+Run the command to retrieve secrets:
 
 Run:
 ```bash
@@ -83,7 +86,7 @@ This command shows the "default" policy which is restrictive, so the previous co
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-lookup-default.png" width="500">
 
-2. Switch back to the Root token. (Token was saved when you ran the "lab setup" script at the beginning of this exercise.)
+2. Switch back to the Root token. (Token that was saved when you ran the "lab setup" script at the beginning of this exercise.)
 
 The root token has sufficient permissions to inspect policies and create a new token.
 

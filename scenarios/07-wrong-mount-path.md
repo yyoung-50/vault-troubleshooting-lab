@@ -22,6 +22,10 @@ A user gets “no handler for route” or similar errors when trying to access a
 ```bash
 vault secrets list
 ``` 
+1. Ensure Vault is running and initialized:
+
+- This step assumes you ran the **reset-lab.sh** script.  See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+- After running the reset script, save the output to use the **Root token** in later exercises.
 
 **Reproduce the issue**
 

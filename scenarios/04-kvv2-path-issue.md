@@ -23,28 +23,38 @@ A user cannot read a secret from KV v2. They get “No such file or directory" e
 ```bash
 vault kv read kv/app/config
 ```
+1. Ensure Vault is running and initialized:
+
+- This step assumes you ran the **reset-lab.sh** script.  See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+- After running the reset script, save the output to use the **Root token** in later exercises.
+
 **Reproduce the issue**
 
-1. Confirm the version of KV at `kv/` (should be enabled)
+1. Confirm the version of KV at `kv/` (should be enabled) - KV = Key Value Secrets Engine
 
+The KV (Key-Value) secrets engine is used to store and retrieve secrets as key-value pairs.
 
+Run:
 ```bash
 vault secrets list --detailed
-
 ```
+Output shows KV version 2
 
 2. Write a secret:
 
+Run:
 ```bash
 vault kv put kv/app/config api_key="super-secret-api-key-03"
 ```
-3. Try to read using the wrong path (API style):
+3. Try to read the secret using the raw Vault API path (this will fail):
 
 ```bash 
 vault read kv/app/config
 ```
 
 Error output: Invalid path for a versioned K/V secrets engine.
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-read-wrong-path.png" width="400">
 
 **Diagnose the Problem**
 

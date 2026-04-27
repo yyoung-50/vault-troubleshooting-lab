@@ -22,49 +22,63 @@ An application suddenly loses access to Vault. It worked earlier, but now all re
 
 ```bash
 vault token lookup
+- TTL for token is 0s
 ```
-TTL for token is 0s
+1. Ensure Vault is running and initialized:
+
+- This step assumes you ran the **reset-lab.sh** script.  See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+- After running the reset script, save the output to use the **Root token** in later exercises.
 
 **Reproduce the Issue**
 
-1. Create a short-lived token:
+2. Create a short-lived token:
 ```bash
 vault token create -policy="app-policy" -ttl=30s
 ```
-2. Use the token from the command output and run the commands:
+3. Use the token from the command output and run the commands:
 
 ```bash
-export VAULT_TOKEN=<root_token>
+export VAULT_TOKEN=<short-lived-token>
 vault kv get kv/app/config
 ```
-Command will succeed
+Command will succeed, and secrets are retrieved 
 
-3. Wait 45-60 seconds, then try again:
+4. Wait 45-60 seconds, then try again:
 
 ```bash 
 vault kv get kv/app/config
 ```
-Command failed at the TTL expiration of 50s after running the command a second time.
+Command failed at the TTL expiration of 30s after running the command a second time.
+
+![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/kv-get-error.png)
 
 **Diagnose the Problem**
 
-4. Create another short-lived token that expires in 50 seconds, and run "vault token lookup". 
-Check the token details:
+5. Create another **short-lived token** that expires in 50 seconds, and run "vault token lookup" to check TTL. 
+
+To run the next commands, you need to first export the **root token** with full permissions. (Use root token from lab reset script)
 
 ```bash
-
 export VAULT_TOKEN=<root token>
+```
+Create a short-lived token:
+
+Run:
+```bash
 vault token create -policy="app-policy" -ttl=50s
+```
+- Use **short-lived token** output for next command:
+- Check the token details:
+
+Run:
+```bash
 vault token lookup "<short-lived-token>"
 ```
 
-Note: use the <root token> you saved earlier for this test.
 The output shows the TTL is too short:
 
 - ttl
-
 - expire_time
-
 - renewable
 
 **Identify the Root Cause**
@@ -75,6 +89,8 @@ The output shows the TTL is too short:
 
 **Apply the Fix**
 
+The fix is to create a longer-lived token
+
 1. Create a longer-lived token (for testing):
 
 ```bash
@@ -82,7 +98,6 @@ vault token create -policy="app-policy" -ttl=1h
 ```
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/tokenexpired.png)
-
 
 2. For production:
 

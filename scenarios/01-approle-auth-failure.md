@@ -27,10 +27,8 @@ vault write auth/approle/login role_id="..." secret_id="..."
 
 1. Ensure Vault is running and initialized:
 
-This step assumes you ran the **reset-lab.sh** script
-
-See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
-
+- This step assumes you ran the **reset-lab.sh** script.  See steps to run script: [Lab Setup Script](../README.md#4-run-the-lab-setup-script)
+- After running the reset script, save the output to use the **Root token** in later exercises.
 
 2. Try logging in with a wrong Role ID:
 
@@ -48,7 +46,6 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="wrong-secret-id"
 Result of running both commands will fail.
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/wrong-secret-id.png" width="500">
-
 
 **Diagnose the Problem**
 
@@ -82,6 +79,8 @@ Use case for these commands are for manual inspection / debugging.
 - In some cases, the secret_id may have expired based on secret_id_ttl.
 
 **Apply the Fix**
+
+The fix is to generate an new Role-ID and Secret-ID
 
 Run these commands below to generate a Role-ID and Secret-ID
 
