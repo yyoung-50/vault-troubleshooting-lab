@@ -4,7 +4,7 @@ This project is a hands-on HashiCorp Vault troubleshooting lab built around issu
 
 The lab includes troubleshooting scenarios that present specific errors, along with the commands used, what went wrong, and the step-by-step process to fix them. Each scenario is written like a mini support ticket, similar to what engineers see during a real support call.
 
-The goal of this project is to walk through diagnosing and isolating Vault issues step‑by‑step in a ticket‑style format. It also shows the troubleshooting thought proces that you can apply to Vault or technical issues in general.
+The goal of this project is to walk through diagnosing and isolating Vault issues step‑by‑step in a ticket‑style format. It also shows the troubleshooting thought process that you can apply to Vault or technical issues in general.
 
 <p align="left">
   <img src="screenshots/scenario01/ticket-number-Approle-03.png" width="500">
