@@ -54,7 +54,7 @@ vault read kv/app/config
 
 Error output: Invalid path for a versioned K/V secrets engine.
 
-<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-read-wrong-path.png" width="400">
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-read-wrong-path.png" width="500">
 
 **Diagnose the Problem**
 
