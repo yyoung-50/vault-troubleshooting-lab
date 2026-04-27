@@ -55,7 +55,7 @@ Output of this command creates a token with a policy named "default".
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/token-policy-default.png" width="500">
 
-3. Export the token from the output of the command in Step 2 
+3. Export the token from the output of the previous Step 2.
 
 Run:
 ```bash
@@ -63,7 +63,7 @@ export VAULT_TOKEN="token"
 vault kv get kv/app/config
 ```
 
-It should fail because the default policy which does not allow; reading, writing secrets, creating tokens, managing auth methods.
+It should fail because the default policy attached to the token.  This does not allow; reading, writing secrets, creating tokens, managing auth methods.
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-get-error.png" width="500">
 
@@ -71,12 +71,13 @@ It should fail because the default policy which does not allow; reading, writing
 
 1. Find out which policies are attached to the token?
 
+Run:
 ```bash
 vault token lookup
 ```
 This command shows the "default" policy which is restrictive, so the command failed.
 
-(screen here)
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-get-error.png" width="500">
 
 2. Run command below to see what the app-policy allows?
 
