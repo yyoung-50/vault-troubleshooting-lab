@@ -210,11 +210,11 @@ When you run the lab reset script it configures Vault as follows:
 
  - See the lab folder structure for key files -  [Lab Folder Structure](How-to-Use-this-Lab.md#lab-folder-structure)
 
- ### Lab Setup Script
+ ### Lab Setup Script Error
 
  - The lab setup script resets the lab configurations from the initialization script (init-vault.sh)
 
- - If you get the error below running the lab reset script
+ If you get the error below running the lab reset script
    - Check that the container is running on Docker desktop.
    - Restart the container
 
