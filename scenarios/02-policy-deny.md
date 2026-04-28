@@ -44,11 +44,10 @@ vault kv get kv/app/config
 
 Output of command:
 
-**Key**      **Value**
-
-api_key      super-secret-api-key
-
-env          dev
+|**Key**|**Value**|
+|-------|---------|
+|api_key|super-secret-api-key
+|env|dev
 
 ---
 **Reproduce the issue**
