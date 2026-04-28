@@ -55,11 +55,12 @@ Output from this command creates a file called "ciphertext.txt" in your current 
 
 4. Corrupt the ciphertext:
 
+Run:
 ```bash
 echo "corrupted" > ciphertext.txt
 ```
 
-5. Run decrypt:
+5. Run decrypt command:
 
 ```bash
 vault write transit/decrypt/app-key ciphertext="$(cat ciphertext.txt)"
