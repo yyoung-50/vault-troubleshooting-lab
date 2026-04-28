@@ -42,12 +42,13 @@ vault kv get kv/app/config
 - Command succeeded because the active token is the root token, which has full permissions.
 - Command succeeded and retrieved secrets stored in Vault at that path:
 
-Output:
+Output of command:
+
 **Key**      **Value**
 
-api_key    super-secret-api-key
+api_key      super-secret-api-key
 
-env        dev
+env          dev
 
 ---
 **Reproduce the issue**
