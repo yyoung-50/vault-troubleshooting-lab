@@ -39,15 +39,15 @@ Run:
 ```bash
 vault kv get kv/app/config
 ```
-- Command succeeds because root token has full permission access.
-- Command succeeds and retrieve a secrets stored in Vault at that path:
+- Command succeeded because the active token is the root token, which has full permissions.
+- Command succeeded and retrieved secrets stored in Vault at that path:
 
 Output:
 Key        Value
----        -----
+ --       --
 api_key    super-secret-api-key
 env        dev
-
+---
 **Reproduce the issue**
 
 2. Create a token with a restricted policy, "default"(simulating a misconfigured policy):

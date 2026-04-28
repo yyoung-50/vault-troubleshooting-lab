@@ -43,7 +43,7 @@ Run:
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="wrong-secret-id"
 ```
 
-Result of running both commands will fail.
+Result of running both commands is an error.
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/wrong-secret-id.png" width="500">
 
@@ -76,7 +76,7 @@ Use case for these commands are for manual inspection / debugging.
 
 - The application (or user) is using an incorrect role_id or secret_id.
 
-- In some cases, the secret_id may have expired based on secret_id_ttl.
+- In some cases, the secret_id may have expired based on the Secret-ID TTL (Time-To_live).
 
 **Apply the Fix**
 
@@ -126,9 +126,9 @@ vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 
   - Secret ID is valid and not expired
 
-Note: After generating a new secret ID, you are able to sign on with the command below.
+**Note:** After generating a new secret ID, you are able to sign on with the command below.
 
-This command authenticates to Vault using the AppRole method and returns a client token for API/CLI access, role-id and secret-id.
+The following command authenticates to Vault using the AppRole method and returns a client token for API/CLI access, role-id and secret-id.
 
 Run:
 ```bash
