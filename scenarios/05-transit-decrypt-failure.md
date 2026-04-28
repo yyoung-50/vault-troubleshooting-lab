@@ -104,7 +104,7 @@ vault write transit/decrypt/app-key ciphertext="$(cat ciphertext.txt)"
 ```
 The decryption was successful as the encrypted data was valid.
 
-<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/decrypt-successful.png" width="500">
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/decyrpt-successful.png" width="500">
 
 Recommended solutions:
 
