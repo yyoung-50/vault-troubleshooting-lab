@@ -33,12 +33,12 @@ vault token lookup
 
 2. Create a short-lived token:
 ```bash
-vault token create -policy="app-policy" -ttl=30s
+vault token create -policy="app-policy" -ttl=50s
 ```
 3. Use the token from the command output and run the commands:
 
 ```bash
-export VAULT_TOKEN=<short-lived-token>
+export VAULT_TOKEN="short-lived-token"
 vault kv get kv/app/config
 ```
 Command will succeed, and secrets are retrieved 
@@ -48,7 +48,7 @@ Command will succeed, and secrets are retrieved
 ```bash 
 vault kv get kv/app/config
 ```
-Command failed at the TTL expiration of 30s after running the command a second time.
+Command failed at the TTL expiration of 50s after running the command a second time.
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/kv-get-error.png)
 
@@ -59,7 +59,7 @@ Command failed at the TTL expiration of 30s after running the command a second t
 To run the next commands, you need to first export the **root token** with full permissions. (Use root token from lab reset script)
 
 ```bash
-export VAULT_TOKEN=<root token>
+export VAULT_TOKEN="root_token"
 ```
 Create a short-lived token:
 
@@ -72,14 +72,13 @@ vault token create -policy="app-policy" -ttl=50s
 
 Run:
 ```bash
-vault token lookup "<short-lived-token>"
+vault token lookup "short-lived-token"
 ```
 
 The output shows the TTL is too short:
+Note the TTL (Time To Live)
 
-- ttl
-- expire_time
-- renewable
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/ttl-16-seconds.png" width="500">
 
 **Identify the Root Cause**
 

@@ -52,7 +52,7 @@ Output of command:
 ---
 **Reproduce the issue**
 
-2. Create a token with a restricted policy, "default"(simulating a misconfigured policy):
+2. Create a token with a restricted policy, "default" - (simulating a misconfigured policy):
 
 Run:
 ```bash
@@ -68,17 +68,17 @@ Output of this command creates a token with a policy named "default".
 
 Run two commands:
 ```bash
-export VAULT_TOKEN="token"
+export VAULT_TOKEN="root_token"
 vault kv get kv/app/config
 ```
 
-It should fail because the default policy attached to the token.  This policy does not allow; reading, writing secrets, creating tokens, managing auth methods.
+It should fail because the policy named "default" attached to the token.  This policy does not allow; reading, writing secrets, creating tokens, managing auth methods.
 
 <img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/kv-get-error.png" width="500">
 
 **Diagnose the Problem**
 
-1. Find out which policies are attached to the token?
+1. Find out which policies are attached to the token
 
 Run:
 ```bash
@@ -94,7 +94,7 @@ The root token has sufficient permissions to inspect policies and create a new t
 
 Run:
 ```bash
-export VAULT_TOKEN=<root_token>
+export VAULT_TOKEN="root_token"
 ```
 
 3. Check the existing "app-policy" has the correct permissions.
@@ -103,7 +103,7 @@ Run:
 ```bash
 vault policy read app-policy
 ```
-The "app-policy" allows "read" and "list" so will be able to run the **vault kv get kv/app/config** command
+The "app-policy" allows "read" and "list" so you can run the **vault kv get kv/app/config** command
 
 ![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/vault-app-policy.png) 
 
@@ -131,7 +131,7 @@ This command creates a new token and attaches the "app-policy", the "default" po
 
 Run:
 ```bash
-export VAULT_TOKEN=<token>
+export VAULT_TOKEN="token"
 ```
 
 After exporting the Token with the new **app-policy**, you will be able to run the command.
