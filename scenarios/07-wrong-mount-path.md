@@ -68,7 +68,7 @@ User assumes default path (secret/) but engine is mounted at kv/.  Therefore, th
 ```bash
 vault kv get kv/app/config
 ```
-Command is retrieves secrets successfully because the engine is mounted at kv/
+Command is retrieves secrets successfully because the engine is mounted at kv/.  
 
 **Key Findings**
 
