@@ -96,7 +96,9 @@ The fix is to create a longer-lived token
 vault token create -policy="app-policy" -ttl=1h
 ```
 
-![Vault Login Output](https://raw.githubusercontent.com/yyoung-50/vault-troubleshooting-lab/main/screenshots/scenario01/tokenexpired.png)
+The result of this command, would create a token that would last longer for 1 hour.
+
+<img src="https://github.com/yyoung-50/vault-troubleshooting-lab/blob/main/screenshots/scenario01/tokenexpired.png" width="500">
 
 2. For production:
 
