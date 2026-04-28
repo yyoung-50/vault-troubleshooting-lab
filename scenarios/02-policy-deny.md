@@ -43,10 +43,12 @@ vault kv get kv/app/config
 - Command succeeded and retrieved secrets stored in Vault at that path:
 
 Output:
-Key        Value
- --       --
+**Key**      **Value**
+
 api_key    super-secret-api-key
+
 env        dev
+
 ---
 **Reproduce the issue**
 
