@@ -131,7 +131,5 @@ KVv2 paths differ from KVv1 and must be referenced correctly.
 
 Your commentary:
 
-What you personally learned
 
-How this scenario improves your troubleshooting skills
 ```
