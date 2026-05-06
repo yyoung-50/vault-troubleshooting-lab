@@ -44,7 +44,7 @@ export SECRET_ID=$(cat setup/roles/app-secret-id.txt)
 vault write auth/approle/login role_id="wrong" secret_id="$SECRET_ID"
 
 Add a screenshot here:
-[Looks like the result wasn't safe to show. Let's switch things up and try something else!]
+
 
 Your commentary:
 
@@ -70,7 +70,7 @@ vault write <path>
 vault login <method>
 
 Add a screenshot here:
-[Looks like the result wasn't safe to show. Let's switch things up and try something else!]
+
 
 Your commentary:
 
@@ -107,7 +107,7 @@ vault write -f auth/approle/role/app-role/secret-id
 vault write auth/approle/login role_id="$ROLE_ID" secret_id="$SECRET_ID"
 
 Add a screenshot here:
-[Looks like the result wasn't safe to show. Let's switch things up and try something else!]
+
 
 Your commentary:
 
